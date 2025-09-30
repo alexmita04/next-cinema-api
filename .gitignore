@@ -12,6 +12,7 @@ pids
 *.seed
 *.pid.lock
 
+*.env
 .env
 .env.local
 .env.development.local
