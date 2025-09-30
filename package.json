@@ -1,0 +1,24 @@
+{
+  "name": "next-cinema-api",
+  "version": "1.0.0",
+  "description": "next-cinema-api",
+  "homepage": "https://github.com/alexmita04/next-cinema-api#readme",
+  "bugs": {
+    "url": "https://github.com/alexmita04/next-cinema-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexmita04/next-cinema-api.git"
+  },
+  "license": "ISC",
+  "author": "Mita Alexandru Serban",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.18.3"
+  }
+}
