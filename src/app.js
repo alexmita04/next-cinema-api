@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 
 const morgan = require("morgan");
+const ExpressError = require("./utils/ExpressError");
 
 // Essential Middleware
 app.use(express.json());
@@ -12,6 +13,10 @@ app.use(morgan("dev"));
 
 app.get("/", (req, res, next) => {
   res.send("test");
+});
+
+app.use((req, res, next) => {
+  next(new ExpressError(`Not Found - ${req.originalUrl}`, 404));
 });
 
 app.use((err, req, res, next) => {
