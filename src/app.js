@@ -4,6 +4,7 @@ const app = express();
 
 const morgan = require("morgan");
 const helmet = require("helmet");
+const cors = require("cors");
 const ExpressError = require("./utils/ExpressError");
 
 // Essential Middleware
@@ -12,6 +13,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan("dev"));
 app.use(helmet());
+
+const corsOptions = {
+  origin: ["http://localhost:8080"], // to be added
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 
 app.get("/", (req, res, next) => {
   res.send("test");
