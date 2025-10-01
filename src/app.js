@@ -5,6 +5,7 @@ const app = express();
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 const ExpressError = require("./utils/ExpressError");
 
 // Essential Middleware
@@ -21,6 +22,15 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use(cors(corsOptions));
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 100,
+  standardHeaders: "draft-8",
+  legacyHeaders: false,
+  ipv6Subnet: 56,
+});
+app.use(limiter);
 
 app.get("/", (req, res, next) => {
   res.send("test");
