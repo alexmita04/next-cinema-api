@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema(
   {
@@ -14,6 +15,16 @@ const userSchema = new Schema(
       required: [true, "The user password is mandatory and cannot be empty."],
       select: false,
     },
+    refreshTokens: [
+      {
+        token: String,
+        createdAt: {
+          type: Date,
+          default: Date.now,
+          expires: 60 * 60 * 24 * 7, // 7 days
+        },
+      },
+    ],
     dateOfBirth: {
       type: Date,
       required: [
@@ -59,6 +70,16 @@ userSchema.virtual("age").get(function () {
 
   return age;
 });
+
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  this.password = await bcrypt.hash(this.password, 12);
+  next();
+});
+
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
+};
 
 const User = mongoose.model("User", userSchema);
 
