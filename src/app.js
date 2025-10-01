@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
+const db = require("./config/db");
 const ExpressError = require("./utils/ExpressError");
 
 // Essential Middleware
