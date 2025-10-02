@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const {
   generateAccessToken,
   generateRefreshToken,
-  authenticate,
   REFRESH_TOKEN_SECRET,
 } = require("../middlewares/auth");
 const catchAsync = require("../utils/catchAsync");
@@ -11,8 +10,10 @@ const ExpressError = require("../utils/ExpressError");
 
 exports.register = catchAsync(async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    if (!username || !password)
+    const { username, password, dateOfBirth, gender, phoneNumber, address } =
+      req.body;
+    if (!username || !password || !dateOfBirth || !phoneNumber || !address)
+      // it will be replaced by a joi schmea soon
       return next(new ExpressError("All register fields are mandatory", 400));
 
     const existingUser = await User.findOne({ username });
@@ -20,7 +21,14 @@ exports.register = catchAsync(async (req, res, next) => {
       return next(new ExpressError("The email is already used", 400));
     }
 
-    const newUser = new User({ username, password });
+    const newUser = new User({
+      username,
+      password,
+      dateOfBirth,
+      gender,
+      phoneNumber,
+      address,
+    });
     const accessToken = generateAccessToken(newUser._id);
     const refreshToken = generateRefreshToken(newUser._id);
     newUser.refreshTokens.push({ token: refreshToken });
@@ -39,7 +47,7 @@ exports.register = catchAsync(async (req, res, next) => {
         message: "Account created",
         accessToken,
         user: {
-          id: user._id,
+          id: newUser._id,
           username: newUser.username,
         },
       },
@@ -57,12 +65,12 @@ exports.login = catchAsync(async (req, res, next) => {
       return next(new ExpressError("All fields are mandatory", 400));
     }
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username }).select("+password");
     if (!user) {
       return next(new ExpressError("Invalid Credentials", 401));
     }
 
-    const validPassword = await user.comparePassword(password);
+    const validPassword = await user.comparePassword(password, user.password);
     if (!validPassword) {
       return next(new ExpressError("Invalid Credentials", 401));
     }
@@ -73,7 +81,7 @@ exports.login = catchAsync(async (req, res, next) => {
     user.refreshTokens.push({ token: refreshToken });
     await user.save();
 
-    res.cookie("refresh-token", refreshToken, {
+    res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: true,
       sameSite: true,
@@ -98,7 +106,9 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.refresh = catchAsync(async (req, res, next) => {
   try {
-    const { refreshToken } = req.cookies.refreshToken;
+    console.log(req.cookie);
+    const { refreshToken } = req.cookies;
+    console.log(refreshToken);
 
     if (!refreshToken) {
       return next(new ExpressError("All fields are mandatory"));
@@ -130,11 +140,17 @@ exports.refresh = catchAsync(async (req, res, next) => {
 
 exports.logout = catchAsync(async (req, res, next) => {
   try {
-    const { refreshToken } = req.body;
+    const { refreshToken } = req.cookies;
 
-    await User.findByIdAndUpdate(req.user_id, {
-      $pull: { refreshTokens: { token: refreshToken } },
-    });
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $pull: { refreshTokens: { token: refreshToken } },
+      },
+      { new: true }
+    );
+
+    console.log(updatedUser);
 
     res.clearCookie("refreshToken");
 
@@ -145,6 +161,8 @@ exports.logout = catchAsync(async (req, res, next) => {
       },
     });
   } catch (err) {
+    console.log(err);
+
     return next(new ExpressError("Logout Error"));
   }
 });

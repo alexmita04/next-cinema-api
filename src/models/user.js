@@ -22,8 +22,8 @@ const userSchema = new Schema(
           type: Date,
           default: Date.now,
           expires: 60 * 60 * 24 * 7, // 7 days
+          select: false,
         },
-        select: false,
       },
     ],
     dateOfBirth: {

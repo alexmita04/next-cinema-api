@@ -6,8 +6,10 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
+const cookieParser = require("cookie-parser");
 const db = require("./config/db");
 const ExpressError = require("./utils/ExpressError");
+const userRouter = require("./routes/user");
 
 // Essential Middleware
 app.use(express.json());
@@ -33,6 +35,10 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+app.use(cookieParser());
+
+app.use("/api/users", userRouter);
+
 app.get("/", (req, res, next) => {
   res.send("test");
 });
@@ -47,7 +53,7 @@ app.use((err, req, res, next) => {
   if (err.isOperational) {
     const { statusCode = 500, message = "Something went wrong" } = err;
 
-    res.status(statusCode).json({
+    return res.status(statusCode).json({
       status: "error",
       message: message,
       stack: process.env.NODE_ENV === "development" ? err.stack : undefined,

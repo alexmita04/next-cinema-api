@@ -22,7 +22,7 @@ const authenticate = async (req, res, next) => {
 
     const decodedToken = jwt.verify(token, ACCESS_TOKEN_SECRET);
 
-    const user = User.findById(decodedToken.userId);
+    const user = await User.findById(decodedToken.userId);
 
     if (!user) {
       return next(new ExpressError("User invalid", 401));
