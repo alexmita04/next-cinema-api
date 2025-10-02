@@ -15,7 +15,7 @@ const cinemaSchema = new Schema(
     },
     admin: {
       type: mongoose.Types.ObjectId,
-      ref: "Admin",
+      ref: "User",
       required: [true, "The cinema admin is mandatory and cannot be empty."],
     },
     auditoriums: [
