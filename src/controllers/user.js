@@ -26,12 +26,18 @@ exports.register = catchAsync(async (req, res, next) => {
     newUser.refreshTokens.push({ token: refreshToken });
     await newUser.save();
 
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
     res.status(201).json({
       status: "success",
       data: {
         message: "Account created",
         accessToken,
-        refreshToken,
         user: {
           id: user._id,
           username: newUser.username,
@@ -67,12 +73,18 @@ exports.login = catchAsync(async (req, res, next) => {
     user.refreshTokens.push({ token: refreshToken });
     await user.save();
 
+    res.cookie("refresh-token", refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
     res.json({
       status: "success",
       data: {
         message: "Logged in",
         accessToken,
-        refreshToken,
         user: {
           id: user._id,
           username: user.username,
@@ -86,7 +98,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.refresh = catchAsync(async (req, res, next) => {
   try {
-    const { refreshToken } = req.body;
+    const { refreshToken } = req.cookies.refreshToken;
 
     if (!refreshToken) {
       return next(new ExpressError("All fields are mandatory"));
@@ -123,6 +135,8 @@ exports.logout = catchAsync(async (req, res, next) => {
     await User.findByIdAndUpdate(req.user_id, {
       $pull: { refreshTokens: { token: refreshToken } },
     });
+
+    res.clearCookie("refreshToken");
 
     res.json({
       status: "success",
