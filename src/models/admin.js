@@ -17,6 +17,7 @@ const adminSchema = new Schema(
     password: {
       type: String,
       required: [true, "The admin password is mandatory and cannot be empty."],
+      select: false,
     },
     email: {
       type: String,
