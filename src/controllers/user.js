@@ -1,0 +1,136 @@
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
+const {
+  generateAccessToken,
+  generateRefreshToken,
+  authenticate,
+  REFRESH_TOKEN_SECRET,
+} = require("../middlewares/auth");
+const catchAsync = require("../utils/catchAsync");
+const ExpressError = require("../utils/ExpressError");
+
+exports.register = catchAsync(async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password)
+      return next(new ExpressError("All register fields are mandatory", 400));
+
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return next(new ExpressError("The email is already used", 400));
+    }
+
+    const newUser = new User({ username, password });
+    const accessToken = generateAccessToken(newUser._id);
+    const refreshToken = generateRefreshToken(newUser._id);
+    newUser.refreshTokens.push({ token: refreshToken });
+    await newUser.save();
+
+    res.status(201).json({
+      status: "success",
+      data: {
+        message: "Account created",
+        accessToken,
+        refreshToken,
+        user: {
+          id: user._id,
+          username: newUser.username,
+        },
+      },
+    });
+  } catch (err) {
+    return next(new ExpressError("Register Error", 500));
+  }
+});
+
+exports.login = catchAsync(async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+      return next(new ExpressError("All fields are mandatory", 400));
+    }
+
+    const user = await User.findOne({ username });
+    if (!user) {
+      return next(new ExpressError("Invalid Credentials", 401));
+    }
+
+    const validPassword = await user.comparePassword(password);
+    if (!validPassword) {
+      return next(new ExpressError("Invalid Credentials", 401));
+    }
+
+    const accessToken = generateAccessToken(user._id);
+    const refreshToken = generateRefreshToken(user._id);
+
+    user.refreshTokens.push({ token: refreshToken });
+    await user.save();
+
+    res.json({
+      status: "success",
+      data: {
+        message: "Logged in",
+        accessToken,
+        refreshToken,
+        user: {
+          id: user._id,
+          username: user.username,
+        },
+      },
+    });
+  } catch (err) {
+    return next(new ExpressError("Login Error", 500));
+  }
+});
+
+exports.refresh = catchAsync(async (req, res, next) => {
+  try {
+    const { refreshToken } = req.body;
+
+    if (!refreshToken) {
+      return next(new ExpressError("All fields are mandatory"));
+    }
+
+    const decoded = jwt.verify(refreshToken, REFRESH_TOKEN_SECRET);
+
+    const user = await User.findOne({
+      _id: decoded.userId,
+      "refreshTokens.token": refreshToken,
+    });
+
+    if (!user) {
+      return next(new ExpressError("Invalid Refresh Token", 401));
+    }
+
+    const newAccessToken = generateAccessToken(user._id);
+
+    res.json({
+      status: "success",
+      data: {
+        accessToken: newAccessToken,
+      },
+    });
+  } catch (err) {
+    return next(new ExpressError("Invalid Refresh Token"));
+  }
+});
+
+exports.logout = catchAsync(async (req, res, next) => {
+  try {
+    const { refreshToken } = req.body;
+
+    await User.findByIdAndUpdate(req.user_id, {
+      $pull: { refreshTokens: { token: refreshToken } },
+    });
+
+    res.json({
+      status: "success",
+      data: {
+        message: "Successfully logged out!",
+      },
+    });
+  } catch (err) {
+    return next(new ExpressError("Logout Error"));
+  }
+});
