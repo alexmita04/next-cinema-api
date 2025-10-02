@@ -49,6 +49,10 @@ const userSchema = new Schema(
       type: String,
       required: [true, "The user address is mandatory and cannot be empty."],
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
