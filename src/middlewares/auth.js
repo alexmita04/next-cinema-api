@@ -38,10 +38,24 @@ const authenticate = async (req, res, next) => {
   }
 };
 
+const isAdmin = (req, res, next) => {
+  if (!req.user.isAdmin)
+    return next(new ExpressError("You are not allowed to do this", 403));
+  next();
+};
+
+const isUser = (req, res, next) => {
+  if (req.user.isAdmin)
+    return next(new ExpressError("You are not allowed to do this", 403));
+  next();
+};
+
 module.exports = {
   generateAccessToken,
   generateRefreshToken,
   authenticate,
   ACCESS_TOKEN_SECRET,
   REFRESH_TOKEN_SECRET,
+  isAdmin,
+  isUser,
 };

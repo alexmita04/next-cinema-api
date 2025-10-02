@@ -106,9 +106,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.refresh = catchAsync(async (req, res, next) => {
   try {
-    console.log(req.cookie);
     const { refreshToken } = req.cookies;
-    console.log(refreshToken);
 
     if (!refreshToken) {
       return next(new ExpressError("All fields are mandatory"));
@@ -150,8 +148,6 @@ exports.logout = catchAsync(async (req, res, next) => {
       { new: true }
     );
 
-    console.log(updatedUser);
-
     res.clearCookie("refreshToken");
 
     res.json({
@@ -161,8 +157,6 @@ exports.logout = catchAsync(async (req, res, next) => {
       },
     });
   } catch (err) {
-    console.log(err);
-
     return next(new ExpressError("Logout Error"));
   }
 });
