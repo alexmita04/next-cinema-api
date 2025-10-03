@@ -10,14 +10,6 @@ const auditoriumSchema = new Schmea(
         "The auditorium number is mandatory and cannot be empty.",
       ],
     },
-    cinema: {
-      type: mongoose.Types.ObjectId,
-      ref: "Cinema",
-      required: [
-        true,
-        "The auditorium number is mandatory and cannot be empty.",
-      ],
-    },
     capacity: {
       type: Number,
       required: [

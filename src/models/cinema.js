@@ -36,14 +36,14 @@ const cinemaSchema = new Schema(
       },
     ],
     openingHour: {
-      type: Date,
+      type: Number,
       required: [
         true,
         "The cinema opening hour is mandatory and cannot be empty.",
       ],
     },
     closingHour: {
-      type: Date,
+      type: Number,
       required: [
         true,
         "The cinema closing hour is mandatory and cannot be empty.",

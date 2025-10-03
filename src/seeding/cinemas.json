@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Next Cinema Hollywood Nights",
+    "location": "Sunset Boulevard, Hollywood, LA",
+    "openingHour": 11,
+    "closingHour": 23,
+    "email": "hollywoodnights@nextcinema.com",
+    "parking": true
+  },
+  {
+    "name": "The Next Cinema Downtown Oasis",
+    "location": "Figueroa Street, Downtown LA",
+    "openingHour": 10,
+    "closingHour": 22,
+    "email": "downtowneoasis@nextcinema.com",
+    "parking": false
+  },
+  {
+    "name": "Next Cinema Santa Monica Pier View",
+    "location": "Ocean Avenue, Santa Monica, LA",
+    "openingHour": 12,
+    "closingHour": 22,
+    "email": "pierview@nextcinema.com",
+    "parking": true
+  },
+  {
+    "name": "Next Cinema Beverly Hills Exclusive",
+    "location": "Rodeo Drive, Beverly Hills, LA",
+    "openingHour": 11,
+    "closingHour": 21,
+    "email": "beverlyhills@nextcinema.com",
+    "parking": true
+  },
+  {
+    "name": "Next Cinema Retro",
+    "location": "Ventura Boulevard, San Fernando Valley, LA",
+    "openingHour": 10,
+    "closingHour": 20,
+    "email": "valleyretro@nextcinema.com",
+    "parking": true
+  }
+]
