@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const auditoriumSchema = new Schmea(
+const auditoriumSchema = new Schema(
   {
     number: {
       type: Number,

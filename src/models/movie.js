@@ -105,7 +105,7 @@ const movieSchema = new Schema(
         type: Boolean,
       },
       priority: {
-        type: number,
+        type: Number,
       },
     },
   },
