@@ -12,6 +12,6 @@ router.route("/refresh").post(userController.refresh);
 
 router.route("/logout").post(authenticate, userController.logout);
 
-router.route("/profile").get(authenticate, isUser, userController.getProfile);
+router.route("/profile").get(authenticate, userController.getProfile);
 
 module.exports = router;

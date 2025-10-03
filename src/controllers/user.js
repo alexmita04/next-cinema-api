@@ -162,8 +162,15 @@ exports.logout = catchAsync(async (req, res, next) => {
 });
 
 exports.getProfile = catchAsync(async (req, res, next) => {
-  const { username, dateOfBirth, gender, phoneNumber, address, createdAt } =
-    req.user;
+  const {
+    username,
+    dateOfBirth,
+    gender,
+    phoneNumber,
+    address,
+    createdAt,
+    isAdmin,
+  } = req.user;
 
   res.json({
     status: "success",
@@ -175,6 +182,7 @@ exports.getProfile = catchAsync(async (req, res, next) => {
         phoneNumber,
         address,
         createdAt,
+        isAdmin,
       },
     },
   });
