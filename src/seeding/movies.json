@@ -1,0 +1,812 @@
+[
+  {
+    "title": "The Shawshank Redemption",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "slug": "the-shawshank-redemption",
+    "duration": 142,
+    "releaseDate": "1994-09-23",
+    "genres": ["Drama"],
+    "cast": [
+      {
+        "name": "Tim Robbins",
+        "characterName": "Andy Dufresne"
+      },
+      {
+        "name": "Morgan Freeman",
+        "characterName": "Ellis Boyd 'Red' Redding"
+      },
+      {
+        "name": "Bob Gunton",
+        "characterName": "Warden Norton"
+      }
+    ],
+    "director": "Frank Darabont",
+    "production": "Castle Rock Entertainment",
+    "distribution": "Columbia Pictures",
+    "coverImage": "https://resizing.flixster.com/hgcQ8juhhUYQofbQ6wsXfhicb3Y=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p15987_p_v13_ap.jpg",
+    "trailer": "https://www.youtube.com/watch?v=PLl99DlL6b4&pp=ygUYVGhlIFNoYXdzaGFuayBSZWRlbXB0aW9u"
+  },
+  {
+    "title": "The Godfather",
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "slug": "the-godfather",
+    "duration": 175,
+    "releaseDate": "1972-03-24",
+    "genres": ["Drama", "Thriller"],
+    "cast": [
+      {
+        "name": "Marlon Brando",
+        "characterName": "Don Vito Corleone"
+      },
+      {
+        "name": "Al Pacino",
+        "characterName": "Michael Corleone"
+      },
+      {
+        "name": "James Caan",
+        "characterName": "Sonny Corleone"
+      }
+    ],
+    "director": "Francis Ford Coppola",
+    "production": "Paramount Pictures",
+    "distribution": "Paramount Pictures",
+    "coverImage": "https://resizing.flixster.com/aLKvx7GjWgFMOfboq5KNOX1kCCg=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p6326_p_v13_be.jpg",
+    "trailer": "https://youtu.be/UaVTIH8mujA"
+  },
+  {
+    "title": "The Dark Knight",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "slug": "the-dark-knight",
+    "duration": 152,
+    "releaseDate": "2008-07-18",
+    "genres": ["Action", "Thriller"],
+    "cast": [
+      {
+        "name": "Christian Bale",
+        "characterName": "Bruce Wayne / Batman"
+      },
+      {
+        "name": "Heath Ledger",
+        "characterName": "Joker"
+      },
+      {
+        "name": "Aaron Eckhart",
+        "characterName": "Harvey Dent"
+      }
+    ],
+    "director": "Christopher Nolan",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/dJM7TJzf7qEp9NA2Kni0Cug9myc=/206x305/v2/https://resizing.flixster.com/Wg25mLoPWxjcxXzNyaSF4VGgGE4=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2ZiNjZiNWFkLWVhNzEtNDRhMC1iNGIwLTFmY2FkNzllNTJlMi5qcGc=",
+    "trailer": "https://youtu.be/EXeTwQWrcwY"
+  },
+  {
+    "title": "Pulp Fiction",
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+    "slug": "pulp-fiction",
+    "duration": 154,
+    "releaseDate": "1994-10-14",
+    "genres": ["Drama", "Thriller"],
+    "cast": [
+      {
+        "name": "John Travolta",
+        "characterName": "Vincent Vega"
+      },
+      {
+        "name": "Uma Thurman",
+        "characterName": "Mia Wallace"
+      },
+      {
+        "name": "Samuel L. Jackson",
+        "characterName": "Jules Winnfield"
+      }
+    ],
+    "director": "Quentin Tarantino",
+    "production": "Miramax Films",
+    "distribution": "Miramax Films",
+    "coverImage": "https://resizing.flixster.com/pLEJGnAJ6581w2D1JwLr_7srp4U=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p15684_p_v8_ai.jpg",
+    "trailer": "https://youtu.be/s7EdQ4FqbhY"
+  },
+  {
+    "title": "Inception",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+    "slug": "inception",
+    "duration": 148,
+    "releaseDate": "2010-07-16",
+    "genres": ["Action", "SF", "Thriller"],
+    "cast": [
+      {
+        "name": "Leonardo DiCaprio",
+        "characterName": "Dom Cobb"
+      },
+      {
+        "name": "Joseph Gordon-Levitt",
+        "characterName": "Arthur"
+      },
+      {
+        "name": "Ellen Page",
+        "characterName": "Ariadne"
+      }
+    ],
+    "director": "Christopher Nolan",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/2HAZD3mRXq8DSdsOvBiGf5Kn8HI=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p7825626_p_v10_ae.jpg",
+    "trailer": "https://youtu.be/YoHD9XEInc0"
+  },
+  {
+    "title": "Forrest Gump",
+    "description": "The presidencies of Kennedy and Johnson, the Vietnam War, and other historical events unfold from the perspective of an Alabama man with an extraordinary life story.",
+    "slug": "forrest-gump",
+    "duration": 142,
+    "releaseDate": "1994-07-06",
+    "genres": ["Drama", "Romance"],
+    "cast": [
+      {
+        "name": "Tom Hanks",
+        "characterName": "Forrest Gump"
+      },
+      {
+        "name": "Robin Wright",
+        "characterName": "Jenny Curran"
+      },
+      {
+        "name": "Gary Sinise",
+        "characterName": "Lieutenant Dan Taylor"
+      }
+    ],
+    "director": "Robert Zemeckis",
+    "production": "Paramount Pictures",
+    "distribution": "Paramount Pictures",
+    "coverImage": "https://resizing.flixster.com/zZCVxTj9dWokzMMyqzV63YcNDHk=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/NowShowing/3509/3509_aa.jpg",
+    "trailer": "https://youtu.be/bLvqoHBptjg"
+  },
+  {
+    "title": "The Matrix",
+    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "slug": "the-matrix",
+    "duration": 136,
+    "releaseDate": "1999-03-31",
+    "genres": ["Action", "SF"],
+    "cast": [
+      {
+        "name": "Keanu Reeves",
+        "characterName": "Neo"
+      },
+      {
+        "name": "Laurence Fishburne",
+        "characterName": "Morpheus"
+      },
+      {
+        "name": "Carrie-Anne Moss",
+        "characterName": "Trinity"
+      }
+    ],
+    "director": "Lana Wachowski, Lilly Wachowski",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/kO9s-jGsOi3YXyHkzVlmO9Z5lzI=/206x305/v2/https://resizing.flixster.com/hTz9Ap43sCkvDiFvCkjmb1IWkUg=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2EwMGEwNmQxLTE1MGYtNGQwYS04ZDhlLWQ0MzYwOTQ5M2JlMC5qcGc=",
+    "trailer": "https://youtu.be/vKQi3bBA1y8"
+  },
+  {
+    "title": "Interstellar",
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "slug": "interstellar",
+    "duration": 169,
+    "releaseDate": "2014-11-07",
+    "genres": ["SF", "Drama", "Adventure"],
+    "cast": [
+      {
+        "name": "Matthew McConaughey",
+        "characterName": "Joseph Cooper"
+      },
+      {
+        "name": "Anne Hathaway",
+        "characterName": "Dr. Amelia Brand"
+      },
+      {
+        "name": "Jessica Chastain",
+        "characterName": "Murphy Cooper"
+      }
+    ],
+    "director": "Christopher Nolan",
+    "production": "Paramount Pictures",
+    "distribution": "Paramount Pictures",
+    "coverImage": "https://resizing.flixster.com/7c3qnZfPzZgID7Ft97PccFwEf9U=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10543523_p_v8_as.jpg",
+    "trailer": "https://youtu.be/zSWdZVtXT7E"
+  },
+  {
+    "title": "Gladiator",
+    "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "slug": "gladiator",
+    "duration": 155,
+    "releaseDate": "2000-05-05",
+    "genres": ["Action", "Drama", "Adventure"],
+    "cast": [
+      {
+        "name": "Russell Crowe",
+        "characterName": "Maximus Decimus Meridius"
+      },
+      {
+        "name": "Joaquin Phoenix",
+        "characterName": "Emperor Commodus"
+      },
+      {
+        "name": "Connie Nielsen",
+        "characterName": "Lucilla"
+      }
+    ],
+    "director": "Ridley Scott",
+    "production": "DreamWorks Pictures",
+    "distribution": "Universal Pictures",
+    "coverImage": "https://resizing.flixster.com/um6UX8kKm2JWxoG47ZogdzdQao4=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p24674_p_v13_bc.jpg",
+    "trailer": "https://youtu.be/P5ieIbInFpg"
+  },
+  {
+    "title": "The Lion King",
+    "description": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+    "slug": "the-lion-king",
+    "duration": 88,
+    "releaseDate": "1994-06-24",
+    "genres": ["Animation", "Adventure", "Drama"],
+    "cast": [
+      {
+        "name": "Matthew Broderick",
+        "characterName": "Simba (voice)"
+      },
+      {
+        "name": "James Earl Jones",
+        "characterName": "Mufasa (voice)"
+      },
+      {
+        "name": "Jeremy Irons",
+        "characterName": "Scar (voice)"
+      }
+    ],
+    "director": "Roger Allers, Rob Minkoff",
+    "production": "Walt Disney Pictures",
+    "distribution": "Buena Vista Pictures",
+    "coverImage": "https://resizing.flixster.com/HiAdcZFkxK9p4pd40XH9YxQItP0=/206x305/v2/https://resizing.flixster.com/D8Qse6SPionYXKVFkWo1bNKgdyo=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2IxYzFiNGM2LTJmYWUtNGYyYi04Y2ZiLWRiMzk4YTA0MzdiYS5qcGc=",
+    "trailer": "https://youtu.be/lFzVJEksoDY"
+  },
+  {
+    "title": "The Silence of the Lambs",
+    "description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+    "slug": "the-silence-of-the-lambs",
+    "duration": 118,
+    "releaseDate": "1991-02-14",
+    "genres": ["Thriller", "Horror"],
+    "cast": [
+      {
+        "name": "Jodie Foster",
+        "characterName": "Clarice Starling"
+      },
+      {
+        "name": "Anthony Hopkins",
+        "characterName": "Dr. Hannibal Lecter"
+      },
+      {
+        "name": "Scott Glenn",
+        "characterName": "Jack Crawford"
+      }
+    ],
+    "director": "Jonathan Demme",
+    "production": "Orion Pictures",
+    "distribution": "Orion Pictures",
+    "coverImage": "https://resizing.flixster.com/7KopxU2sZjjX_zyNcp2jenCeHKE=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p13013_p_v10_ao.jpg",
+    "trailer": "https://youtu.be/6iB21hsprAQ"
+  },
+  {
+    "title": "Saving Private Ryan",
+    "description": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+    "slug": "saving-private-ryan",
+    "duration": 169,
+    "releaseDate": "1998-07-24",
+    "genres": ["Drama", "Action"],
+    "cast": [
+      {
+        "name": "Tom Hanks",
+        "characterName": "Captain John Miller"
+      },
+      {
+        "name": "Matt Damon",
+        "characterName": "Private James Ryan"
+      },
+      {
+        "name": "Tom Sizemore",
+        "characterName": "Sergeant Horvath"
+      }
+    ],
+    "director": "Steven Spielberg",
+    "production": "DreamWorks Pictures",
+    "distribution": "Paramount Pictures",
+    "coverImage": "https://resizing.flixster.com/w3n4-6BPPmegOYfBinbTgvms7Uk=/206x305/v2/https://resizing.flixster.com/e4XDrbw7Fd7VYePV7cxB8sQV3eA=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzc1MDczNGJlLWNjN2EtNGIxMS1iOWM5LWJjYTUwODk4MzA5Yy53ZWJw",
+    "trailer": "https://youtu.be/S1Qj_AVu2pA"
+  },
+  {
+    "title": "Avengers: Endgame",
+    "description": "After the devastating events of Infinity War, the Avengers assemble once more to reverse Thanos' actions and restore balance to the universe.",
+    "slug": "avengers-endgame",
+    "duration": 181,
+    "releaseDate": "2019-04-26",
+    "genres": ["Action", "Adventure", "SF"],
+    "cast": [
+      {
+        "name": "Robert Downey Jr.",
+        "characterName": "Tony Stark / Iron Man"
+      },
+      {
+        "name": "Chris Evans",
+        "characterName": "Steve Rogers / Captain America"
+      },
+      {
+        "name": "Scarlett Johansson",
+        "characterName": "Natasha Romanoff / Black Widow"
+      }
+    ],
+    "director": "Anthony Russo, Joe Russo",
+    "production": "Marvel Studios",
+    "distribution": "Walt Disney Studios",
+    "coverImage": "https://resizing.flixster.com/2yTtbYaljlzWgEhOCUTrH55jjfM=/206x305/v2/https://resizing.flixster.com/fC7nU6iTRQk02tS0SDS1ylx-G34=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2QxZjE5ZDgzLTRiY2MtNDFkYS04NWQ4LTRkYzc1ZTAwNWE2NC53ZWJw",
+    "trailer": "https://youtu.be/TcMBFSGVi1c"
+  },
+  {
+    "title": "Parasite",
+    "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    "slug": "parasite",
+    "duration": 132,
+    "releaseDate": "2019-05-30",
+    "genres": ["Drama", "Thriller"],
+    "cast": [
+      {
+        "name": "Song Kang-ho",
+        "characterName": "Kim Ki-taek"
+      },
+      {
+        "name": "Lee Sun-kyun",
+        "characterName": "Park Dong-ik"
+      },
+      {
+        "name": "Cho Yeo-jeong",
+        "characterName": "Choi Yeon-gyo"
+      }
+    ],
+    "director": "Bong Joon-ho",
+    "production": "Barunson E&A",
+    "distribution": "CJ Entertainment",
+    "coverImage": "placeholder-parasite.jpg",
+    "trailer": "https://resizing.flixster.com/DgA7bEJqWSBJmHBhmIb375_VLxE=/206x305/v2/https://resizing.flixster.com/0nQ2niq2j-E4gdW_kB5H606atmc=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzZlZWEwMmY4LTk1OWUtNGEyOS04ODRmLTA0OWRjMzhlYWZkNi53ZWJw"
+  },
+  {
+    "title": "The Green Mile",
+    "description": "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
+    "slug": "the-green-mile",
+    "duration": 189,
+    "releaseDate": "1999-12-10",
+    "genres": ["Drama", "Fantasy"],
+    "cast": [
+      {
+        "name": "Tom Hanks",
+        "characterName": "Paul Edgecomb"
+      },
+      {
+        "name": "Michael Clarke Duncan",
+        "characterName": "John Coffey"
+      },
+      {
+        "name": "David Morse",
+        "characterName": "Brutus 'Brutal' Howell"
+      }
+    ],
+    "director": "Frank Darabont",
+    "production": "Castle Rock Entertainment",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/05F90XUPmyteSngOV7qj5Zd5HfI=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p24429_p_v12_bf.jpg",
+    "trailer": "https://youtu.be/Ki4haFrqSrw"
+  },
+  {
+    "title": "Jurassic Park",
+    "description": "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose.",
+    "slug": "jurassic-park",
+    "duration": 127,
+    "releaseDate": "1993-06-11",
+    "genres": ["Adventure", "SF", "Thriller"],
+    "cast": [
+      {
+        "name": "Sam Neill",
+        "characterName": "Dr. Alan Grant"
+      },
+      {
+        "name": "Laura Dern",
+        "characterName": "Dr. Ellie Sattler"
+      },
+      {
+        "name": "Jeff Goldblum",
+        "characterName": "Dr. Ian Malcolm"
+      }
+    ],
+    "director": "Steven Spielberg",
+    "production": "Universal Pictures",
+    "distribution": "Universal Pictures",
+    "coverImage": "https://resizing.flixster.com/gK7_2oheh_BcSTeRXvbb4-WkPUg=/206x305/v2/https://resizing.flixster.com/dqWYuJel6FX3Ox51DWfMv77fChM=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzU5OWIyYTUzLTVmNTQtNDIxMS04MTdmLWU3ZDc5YmQ5YjM2Zi5qcGc=",
+    "trailer": "https://youtu.be/QWBKEmWWL38"
+  },
+  {
+    "title": "Titanic",
+    "description": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+    "slug": "titanic",
+    "duration": 194,
+    "releaseDate": "1997-12-19",
+    "genres": ["Drama", "Romance"],
+    "cast": [
+      {
+        "name": "Leonardo DiCaprio",
+        "characterName": "Jack Dawson"
+      },
+      {
+        "name": "Kate Winslet",
+        "characterName": "Rose DeWitt Bukater"
+      },
+      {
+        "name": "Billy Zane",
+        "characterName": "Cal Hockley"
+      }
+    ],
+    "director": "James Cameron",
+    "production": "Paramount Pictures",
+    "distribution": "Paramount Pictures",
+    "coverImage": "https://resizing.flixster.com/JBp0dumCJw-ln_HfI4rqvXOagG4=/206x305/v2/https://resizing.flixster.com/j1q6PHK0ZtbdABMQcflU-wH5-eE=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2Y1NGZmNWMyLTczMGUtNDViMS04NzdmLTRiODZiMDM0YWMwOS5qcGc=",
+    "trailer": "https://youtu.be/kVrqfYjkTdQ"
+  },
+  {
+    "title": "The Departed",
+    "description": "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+    "slug": "the-departed",
+    "duration": 151,
+    "releaseDate": "2006-10-06",
+    "genres": ["Thriller", "Drama"],
+    "cast": [
+      {
+        "name": "Leonardo DiCaprio",
+        "characterName": "Billy Costigan"
+      },
+      {
+        "name": "Matt Damon",
+        "characterName": "Colin Sullivan"
+      },
+      {
+        "name": "Jack Nicholson",
+        "characterName": "Frank Costello"
+      }
+    ],
+    "director": "Martin Scorsese",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/SRR1Y1vmMEDjfTaWUbad4ue3WT8=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p162564_p_v8_ag.jpg",
+    "trailer": "https://youtu.be/iojhqm0JTW4"
+  },
+  {
+    "title": "The Prestige",
+    "description": "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+    "slug": "the-prestige",
+    "duration": 130,
+    "releaseDate": "2006-10-20",
+    "genres": ["Drama", "Thriller"],
+    "cast": [
+      {
+        "name": "Christian Bale",
+        "characterName": "Alfred Borden"
+      },
+      {
+        "name": "Hugh Jackman",
+        "characterName": "Robert Angier"
+      },
+      {
+        "name": "Scarlett Johansson",
+        "characterName": "Olivia Wenscombe"
+      }
+    ],
+    "director": "Christopher Nolan",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Buena Vista Pictures",
+    "coverImage": "https://resizing.flixster.com/iP-kNv3KJs0w24Taiq6lKxxfJxk=/206x305/v2/https://resizing.flixster.com/ZPrv6RgLvc5e7c8SUtCyI4QiZnM=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzBlY2FlMDhiLTMwM2EtNDJmMS05NjBkLWM3ZDk5NjZlNjdkNi5qcGc=",
+    "trailer": "https://youtu.be/RLtaA9fFNXU"
+  },
+  {
+    "title": "Back to the Future",
+    "description": "Marty McFly, a teenager, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.",
+    "slug": "back-to-the-future",
+    "duration": 116,
+    "releaseDate": "1985-07-03",
+    "genres": ["Adventure", "Comedy", "SF"],
+    "cast": [
+      {
+        "name": "Michael J. Fox",
+        "characterName": "Marty McFly"
+      },
+      {
+        "name": "Christopher Lloyd",
+        "characterName": "Dr. Emmett Brown"
+      },
+      {
+        "name": "Lea Thompson",
+        "characterName": "Lorraine Baines"
+      }
+    ],
+    "director": "Robert Zemeckis",
+    "production": "Universal Pictures",
+    "distribution": "Universal Pictures",
+    "coverImage": "https://resizing.flixster.com/onrny1m3-su16fvmmc3yVnHtsko=/206x305/v2/https://resizing.flixster.com/s85ABmMbwFG0PX0Y6X-1_tBQ5Mw=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2Q3NDk5NzA1LWE4YWItNGJkMC04MDM2LTExNmY1MDU5ODNlYi5qcGc=",
+    "trailer": "https://youtu.be/qvsgGtivCgs"
+  },
+  {
+    "title": "Goodfellas",
+    "description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito.",
+    "slug": "goodfellas",
+    "duration": 146,
+    "releaseDate": "1990-09-19",
+    "genres": ["Drama", "Thriller"],
+    "cast": [
+      {
+        "name": "Robert De Niro",
+        "characterName": "James Conway"
+      },
+      {
+        "name": "Ray Liotta",
+        "characterName": "Henry Hill"
+      },
+      {
+        "name": "Joe Pesci",
+        "characterName": "Tommy DeVito"
+      }
+    ],
+    "director": "Martin Scorsese",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/L2rTMze6IaTIK7PoxWwv9D2wcIs=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p12720_v_v13_bc.jpg",
+    "trailer": "https://youtu.be/2ilzidi_J8Q"
+  },
+  {
+    "title": "Fight Club",
+    "description": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+    "slug": "fight-club",
+    "duration": 139,
+    "releaseDate": "1999-10-15",
+    "genres": ["Drama", "Thriller"],
+    "cast": [
+      {
+        "name": "Brad Pitt",
+        "characterName": "Tyler Durden"
+      },
+      {
+        "name": "Edward Norton",
+        "characterName": "The Narrator"
+      },
+      {
+        "name": "Helena Bonham Carter",
+        "characterName": "Marla Singer"
+      }
+    ],
+    "director": "David Fincher",
+    "production": "Fox 2000 Pictures",
+    "distribution": "20th Century Fox",
+    "coverImage": "https://resizing.flixster.com/C9FzmCCRIYz2I-F3T2wZgJqDDzc=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p23069_p_v13_au.jpg",
+    "trailer": "https://youtu.be/qtRKdVHc-cE"
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+    "slug": "lotr-fellowship-of-the-ring",
+    "duration": 178,
+    "releaseDate": "2001-12-19",
+    "genres": ["Fantasy", "Adventure", "Drama"],
+    "cast": [
+      {
+        "name": "Elijah Wood",
+        "characterName": "Frodo Baggins"
+      },
+      {
+        "name": "Ian McKellen",
+        "characterName": "Gandalf"
+      },
+      {
+        "name": "Viggo Mortensen",
+        "characterName": "Aragorn"
+      }
+    ],
+    "director": "Peter Jackson",
+    "production": "New Line Cinema",
+    "distribution": "New Line Cinema",
+    "coverImage": "https://resizing.flixster.com/5opT-tFUEhOeMzsbrI8oZIm3EW8=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p28828_p_v8_ao.jpg",
+    "trailer": "https://youtu.be/V75dMMIW2B4"
+  },
+  {
+    "title": "Schindler's List",
+    "description": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    "slug": "schindlers-list",
+    "duration": 195,
+    "releaseDate": "1993-12-15",
+    "genres": ["Drama"],
+    "cast": [
+      {
+        "name": "Liam Neeson",
+        "characterName": "Oskar Schindler"
+      },
+      {
+        "name": "Ben Kingsley",
+        "characterName": "Itzhak Stern"
+      },
+      {
+        "name": "Ralph Fiennes",
+        "characterName": "Amon Goeth"
+      }
+    ],
+    "director": "Steven Spielberg",
+    "production": "Universal Pictures",
+    "distribution": "Universal Pictures",
+    "coverImage": "https://resizing.flixster.com/T0OfKJgU0a1nllJbS1RV3cPL9QY=/206x305/v2/https://resizing.flixster.com/P3NTptLJcIlWlLQwZMTWcITYaoY=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzlmMTBiZGYxLTFjZTctNGZiZS05OGU4LTAxNGIzNGZmNTVlMy5qcGc=",
+    "trailer": "https://youtu.be/mxphAlJID9U"
+  },
+  {
+    "title": "The Shining",
+    "description": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+    "slug": "the-shining",
+    "duration": 146,
+    "releaseDate": "1980-05-23",
+    "genres": ["Horror", "Thriller"],
+    "cast": [
+      {
+        "name": "Jack Nicholson",
+        "characterName": "Jack Torrance"
+      },
+      {
+        "name": "Shelley Duvall",
+        "characterName": "Wendy Torrance"
+      },
+      {
+        "name": "Danny Lloyd",
+        "characterName": "Danny Torrance"
+      }
+    ],
+    "director": "Stanley Kubrick",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/k9_q6yvvM_6ke6bs9SGaVAJbQjQ=/206x305/v2/https://resizing.flixster.com/5E5qZzbrG8KdvlmDKFjnun2HBog=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzA3ZGFkNTA3LTEwZjEtNDM2Yy1hYmQxLWMyMjI4ZjY1ZjBkNy5qcGc=",
+    "trailer": "https://youtu.be/FZQvIJxG9Xs"
+  },
+  {
+    "title": "Spider-Man: Into the Spider-Verse",
+    "description": "Teen Miles Morales becomes the Spider-Man of his universe and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.",
+    "slug": "spider-man-into-the-spider-verse",
+    "duration": 117,
+    "releaseDate": "2018-12-14",
+    "genres": ["Animation", "Action", "Adventure"],
+    "cast": [
+      {
+        "name": "Shameik Moore",
+        "characterName": "Miles Morales (voice)"
+      },
+      {
+        "name": "Jake Johnson",
+        "characterName": "Peter B. Parker (voice)"
+      },
+      {
+        "name": "Hailee Steinfeld",
+        "characterName": "Gwen Stacy (voice)"
+      }
+    ],
+    "director": "Bob Persichetti, Peter Ramsey, Rodney Rothman",
+    "production": "Sony Pictures Animation",
+    "distribution": "Sony Pictures Releasing",
+    "coverImage": "https://resizing.flixster.com/xVd9PLVkH69dU3Yo9XLSjdMeu1M=/206x305/v2/https://resizing.flixster.com/_l50Ahm00b-RO9Ao2s3AyMjUWiU=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2ExYTZmMWFkLWViZWItNDNhMS1iZTEwLTcxODk1YTk3NWFhMy53ZWJw",
+    "trailer": "https://youtu.be/g4Hbz2jLxvQ"
+  },
+  {
+    "title": "Toy Story",
+    "description": "A cowboy doll is profoundly threatened and jealous when a new spaceman action figure supplants him as top toy in a boy's bedroom.",
+    "slug": "toy-story",
+    "duration": 81,
+    "releaseDate": "1995-11-22",
+    "genres": ["Animation", "Adventure", "Comedy"],
+    "cast": [
+      {
+        "name": "Tom Hanks",
+        "characterName": "Woody (voice)"
+      },
+      {
+        "name": "Tim Allen",
+        "characterName": "Buzz Lightyear (voice)"
+      },
+      {
+        "name": "Don Rickles",
+        "characterName": "Mr. Potato Head (voice)"
+      }
+    ],
+    "director": "John Lasseter",
+    "production": "Pixar Animation Studios",
+    "distribution": "Buena Vista Pictures",
+    "coverImage": "https://resizing.flixster.com/zzgbAEu_MsiqMLHwpV8QqdAZEQU=/206x305/v2/https://resizing.flixster.com/IPgQgOBSJlX3BQj-5JUH-MLa5Kw=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzNiNjcyZDExLTFiM2MtNDZiYS1hNDJkLTA3Y2VmY2M5MzljOS5qcGc=",
+    "trailer": "https://youtu.be/v-PjgYDrg70"
+  },
+  {
+    "title": "Mad Max: Fury Road",
+    "description": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshiper, and a drifter named Max.",
+    "slug": "mad-max-fury-road",
+    "duration": 120,
+    "releaseDate": "2015-05-15",
+    "genres": ["Action", "Adventure", "SF"],
+    "cast": [
+      {
+        "name": "Tom Hardy",
+        "characterName": "Max Rockatansky"
+      },
+      {
+        "name": "Charlize Theron",
+        "characterName": "Imperator Furiosa"
+      },
+      {
+        "name": "Nicholas Hoult",
+        "characterName": "Nux"
+      }
+    ],
+    "director": "George Miller",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/W2oVMXCI7lZuBYkRA2BVj9rCOGw=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10854488_p_v8_ac.jpg",
+    "trailer": "https://youtu.be/hEJnMQG9ev8"
+  },
+  {
+    "title": "Casablanca",
+    "description": "A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.",
+    "slug": "casablanca",
+    "duration": 102,
+    "releaseDate": "1942-11-26",
+    "genres": ["Drama", "Romance"],
+    "cast": [
+      {
+        "name": "Humphrey Bogart",
+        "characterName": "Rick Blaine"
+      },
+      {
+        "name": "Ingrid Bergman",
+        "characterName": "Ilsa Lund"
+      },
+      {
+        "name": "Paul Henreid",
+        "characterName": "Victor Laszlo"
+      }
+    ],
+    "director": "Michael Curtiz",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/mGddwTkglVfMnXfPeAiREHf_Ne0=/206x305/v2/https://resizing.flixster.com/wcaZelGoDPS575ju3tWP7-tBM20=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzUxNjQ2ZTQzLTJlNmItNGViYS05MDYyLWIzYTY5YzNhMzI3NS5qcGc=",
+    "trailer": "https://youtu.be/MF7JH_54d8c"
+  },
+  {
+    "title": "Blade Runner 2049",
+    "description": "Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing for thirty years.",
+    "slug": "blade-runner-2049",
+    "duration": 164,
+    "releaseDate": "2017-10-06",
+    "genres": ["SF", "Thriller"],
+    "cast": [
+      {
+        "name": "Ryan Gosling",
+        "characterName": "Officer K"
+      },
+      {
+        "name": "Harrison Ford",
+        "characterName": "Rick Deckard"
+      },
+      {
+        "name": "Ana de Armas",
+        "characterName": "Joi"
+      }
+    ],
+    "director": "Denis Villeneuve",
+    "production": "Warner Bros. Pictures",
+    "distribution": "Warner Bros. Pictures",
+    "coverImage": "https://resizing.flixster.com/e0yEXMKWcKU8_JJ4i3vu45poKbI=/206x305/v2/https://resizing.flixster.com/73VCeyfsM8UDQ0o7IjUIcXr7jd8=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2RlNzI0MGQyLTQ2ZTktNGMyYi05N2VmLTFjMDhiY2VlMDQ2Ni53ZWJw",
+    "trailer": "https://youtu.be/gCcx85zbxz4"
+  }
+]
