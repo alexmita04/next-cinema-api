@@ -1,0 +1,74 @@
+[
+  {
+    "number": 1,
+    "capacity": 100,
+    "type": "Standard",
+    "seatLayout": {
+      "rows": 10,
+      "seatsPerRow": 10
+    },
+    "screenSize": "Medium, Matte Screen",
+    "soundSystem": "Dolby 7.1 Surround",
+    "projection": "Digital 2K"
+  },
+  {
+    "number": 2,
+    "capacity": 100,
+    "type": "Standard",
+    "seatLayout": {
+      "rows": 10,
+      "seatsPerRow": 10
+    },
+    "screenSize": "Large, White Screen",
+    "soundSystem": "Dolby Atmos",
+    "projection": "Digital 4K"
+  },
+  {
+    "number": 3,
+    "capacity": 100,
+    "type": "4dx",
+    "seatLayout": {
+      "rows": 10,
+      "seatsPerRow": 10
+    },
+    "screenSize": "Medium, 3D Ready Screen",
+    "soundSystem": "Auro 11.1",
+    "projection": "Dual Digital 4K"
+  },
+  {
+    "number": 4,
+    "capacity": 100,
+    "type": "IMAX",
+    "seatLayout": {
+      "rows": 10,
+      "seatsPerRow": 10
+    },
+    "screenSize": "IMAX, Curved 'Wall-to-Wall' Screen",
+    "soundSystem": "IMAX Proprietary Sound System (12-Channel)",
+    "projection": "IMAX Laser"
+  },
+  {
+    "number": 5,
+    "capacity": 100,
+    "type": "Standard",
+    "seatLayout": {
+      "rows": 10,
+      "seatsPerRow": 10
+    },
+    "screenSize": "Small, Perforated Screen",
+    "soundSystem": "DTS:X",
+    "projection": "Digital 2K"
+  },
+  {
+    "number": 6,
+    "capacity": 100,
+    "type": "Standard",
+    "seatLayout": {
+      "rows": 10,
+      "seatsPerRow": 10
+    },
+    "screenSize": "Large, High Contrast Screen",
+    "soundSystem": "Dolby Atmos",
+    "projection": "Digital 4K with HFR (High Frame Rate)"
+  }
+]
