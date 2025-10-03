@@ -160,3 +160,22 @@ exports.logout = catchAsync(async (req, res, next) => {
     return next(new ExpressError("Logout Error"));
   }
 });
+
+exports.getProfile = catchAsync(async (req, res, next) => {
+  const { username, dateOfBirth, gender, phoneNumber, address, createdAt } =
+    req.user;
+
+  res.json({
+    status: "success",
+    data: {
+      profileInformation: {
+        username,
+        dateOfBirth,
+        gender,
+        phoneNumber,
+        address,
+        createdAt,
+      },
+    },
+  });
+});
