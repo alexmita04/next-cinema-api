@@ -18,23 +18,26 @@ const cinemaSchema = new Schema(
       ref: "User",
       required: [true, "The cinema admin is mandatory and cannot be empty."],
     },
-    auditoriums: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "Auditorium",
-        required: [
-          true,
-          "The cinema auditoriums are mandatory and cannot be empty.",
-        ],
-        validate: {
-          validator: function (auditoriumsArr) {
-            return (
-              auditoriumsArr.length === new Set(auditoriumsArr.map(String)).size
-            );
-          },
+    auditoriums: {
+      type: [
+        {
+          type: mongoose.Types.ObjectId,
+          ref: "Auditorium",
+        },
+      ],
+      required: [
+        true,
+        "The cinema auditoriums are mandatory and cannot be empty.",
+      ],
+      validate: {
+        validator: function (auditoriumsArr) {
+          return (
+            auditoriumsArr.length === new Set(auditoriumsArr.map(String)).size
+          );
         },
       },
-    ],
+    },
+
     openingHour: {
       type: Number,
       required: [

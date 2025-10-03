@@ -24,35 +24,26 @@ const screeningSchema = new Schema(
         "The screening cinema is mandatory and cannot be empty.",
       ],
     },
-    startTime: {
+    date: {
       type: Date,
+      default: Date.now(),
+    },
+    startTime: {
+      type: Number,
       required: [
         true,
         "The screening start time is mandatory and cannot be empty.",
       ],
     },
-    endTime: {
-      type: Date,
-      required: [
-        true,
-        "The screening end time is mandatory and cannot be empty.",
-      ],
-      validate: {
-        validator: function (endTime) {
-          return endTime > startTime;
-        },
-        message: "End time must be later than the start time",
-      },
+    type: {
+      type: String,
+      enum: ["Scheduled", "Recurring"],
+      default: "Scheduled",
     },
     pricing: {
       type: Number,
       required: [true, "The screening price is mandatory and cannot be empty."],
       min: 0,
-    },
-    pricingCategory: {
-      type: String,
-      enum: ["standard", "student"],
-      default: "standard",
     },
     language: {
       type: String,

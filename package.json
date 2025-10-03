@@ -15,7 +15,8 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "dev": "node --watch ./src/server.js"
+    "dev": "node --watch ./src/server.js",
+    "seed": "node ./src/seeding/seed.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

@@ -67,8 +67,6 @@ const auditoriumSchema = new Schema(
   }
 );
 
-auditoriumSchema.index({ number: 1, cinema: 1 }, { unique: true });
-
 const Auditorium = mongoose.model("Auditorium", auditoriumSchema);
 
 module.exports = Auditorium;
