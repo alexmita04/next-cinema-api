@@ -41,7 +41,7 @@ const createAdmin = async (cinemaName, isPublic) => {
     isAdmin: true,
   });
 
-  newAdmin.save();
+  await newAdmin.save();
 
   return newAdmin._id;
 };
