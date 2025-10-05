@@ -28,9 +28,9 @@ exports.getAllCinemas = catchAsync(async (req, res, next) => {
 exports.getCinema = catchAsync(async (req, res, next) => {
   const { cinemaId } = req.params;
 
-  const cinema = await Cinema.findById(cinemaId);
+  const cinema = await Cinema.findById(cinemaId).populate("auditoriums");
 
-  if (!cienma) {
+  if (!cinema) {
     return next(new ExpressError("No cinema found with this id", 404));
   }
 
@@ -123,10 +123,6 @@ exports.getAllScreeningsFromAnAuditorium = catchAsync(
         { type: "Recurring" },
       ],
     }).populate("movie");
-
-    if (!screening) {
-      return next(new ExpressError("No screening found with this id", 404));
-    }
 
     res.json({
       status: "success",
