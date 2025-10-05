@@ -129,6 +129,9 @@ exports.areUrlIdsInterconnected = catchAsync(async (req, res, next) => {
 
   if (screeningId) {
     const screening = await Screening.findById(screeningId);
+    if (!screening) {
+      return next(new ExpressError("No screening found with this id", 404));
+    }
     if (
       !screening.auditorium.equals(auditoriumId) ||
       !screening.cinema.equals(cinemaId)

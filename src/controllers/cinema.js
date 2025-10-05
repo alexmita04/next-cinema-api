@@ -30,6 +30,10 @@ exports.getCinema = catchAsync(async (req, res, next) => {
 
   const cinema = await Cinema.findById(cinemaId);
 
+  if (!cienma) {
+    return next(new ExpressError("No cinema found with this id", 404));
+  }
+
   res.json({
     status: "success",
     data: {
@@ -53,6 +57,15 @@ exports.getAllScreeningsFromACinema = catchAsync(async (req, res, next) => {
   endOfDay.setUTCDate(endOfDay.getUTCDate() + 1);
 
   const cinema = await Cinema.findById(cinemaId);
+
+  if (!cinema) {
+    return next(new ExpressError("No cinema found with this id", 404));
+  }
+
+  if (!cinema) {
+    return next(new ExpressError("No cinema found with this id", 404));
+  }
+
   const screenings = await Screening.find({
     cinema: cinema._id,
     $or: [
@@ -93,6 +106,10 @@ exports.getAllScreeningsFromAnAuditorium = catchAsync(
 
     const cinema = await Cinema.findById(cinemaId);
 
+    if (!cinema) {
+      return next(new ExpressError("No cinema found with this id", 404));
+    }
+
     const screenings = await Screening.find({
       cinema: cinemaId,
       auditorium: auditoriumId,
@@ -106,6 +123,10 @@ exports.getAllScreeningsFromAnAuditorium = catchAsync(
         { type: "Recurring" },
       ],
     }).populate("movie");
+
+    if (!screening) {
+      return next(new ExpressError("No screening found with this id", 404));
+    }
 
     res.json({
       status: "success",
@@ -121,8 +142,6 @@ exports.createScreeningInAnAuditorium = catchAsync(async (req, res, next) => {
   const { movieId, date, startTime, pricing, language, subtitle } = req.body;
 
   const correctDate = utcDate(date);
-
-  console.log("ALEX ESTE CEL MAI TARE");
 
   const newScreening = new Screening({
     auditorium: auditoriumId,
@@ -146,15 +165,15 @@ exports.createScreeningInAnAuditorium = catchAsync(async (req, res, next) => {
 exports.getScreening = catchAsync(async (req, res, next) => {
   const { cinemaId, auditoriumId, screeningId } = req.params;
 
-  let screening = await Screening.findById(screeningId);
+  let screening = await Screening.findById(screeningId).populate([
+    "movie",
+    "cinema",
+    "auditorium",
+  ]);
 
-  if (
-    !screening.cinema.equals(cinemaId) ||
-    !screening.auditorium.equals(auditoriumId)
-  )
-    return next(new ExpressError(`This screening doesn't exist`, 404));
-
-  screening = await screening.populate(["movie", "cinema", "auditorium"]);
+  if (!screening) {
+    return next(new ExpressError("No screening found with this id", 404));
+  }
 
   res.json({
     status: "success",
@@ -178,6 +197,10 @@ exports.updateScreening = catchAsync(async (req, res, next) => {
     subtitle,
   });
 
+  if (!screening) {
+    return next(new ExpressError("No screening found with this id", 404));
+  }
+
   res.json({
     status: "success",
     screening,
@@ -188,6 +211,10 @@ exports.deleteScreening = catchAsync(async (req, res, next) => {
   const { screeningId } = req.params;
 
   const deletedScreening = await Screening.findByIdAndDelete(screeningId);
+
+  if (!deletedScreening) {
+    return next(new ExpressError("No screening found with this id", 404));
+  }
 
   res.json({
     status: "success",
