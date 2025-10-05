@@ -17,7 +17,7 @@ const { ADMIN_PASSWORD, ADMIN_PUBLIC_PASSWORD } = process.env;
 
 const CINEMA_COUNTER = cinemaData.length;
 const AUDITORIUM_COUNTER = auditoriumData.length;
-const SCREENING_COUNTER = 4;
+const SCREENING_COUNTER = 2;
 
 const clearDatabase = async () => {
   await Screening.deleteMany({});
@@ -68,6 +68,19 @@ const populateDatabase = async () => {
       for (let k = 0; k < SCREENING_COUNTER; k++) {
         const screeningMovie = getRandomMovie(movies);
         const endHour = Math.floor(screeningMovie.duration / 60) + 1;
+        const now = Date.now();
+        const currentDate = new Date(now);
+        const utcMidnight = new Date(
+          Date.UTC(
+            currentDate.getUTCFullYear(),
+            currentDate.getUTCMonth(),
+            currentDate.getUTCDate(),
+            0,
+            0,
+            0,
+            0
+          )
+        );
         const newScreening = new Screening({
           auditorium: newAuditorium._id,
           movie: screeningMovie._id,
@@ -77,6 +90,7 @@ const populateDatabase = async () => {
           pricing: Math.floor(Math.random() * 10) + 10,
           language: "English (EN)",
           subtitle: "English (EN)",
+          date: utcMidnight,
         });
 
         await newScreening.save();

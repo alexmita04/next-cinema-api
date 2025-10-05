@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const db = require("./config/db");
 const ExpressError = require("./utils/ExpressError");
 const userRouter = require("./routes/user");
+const cinemaRouter = require("./routes/cinema");
 
 // Essential Middleware
 app.use(express.json());
@@ -38,6 +39,7 @@ app.use(limiter);
 app.use(cookieParser());
 
 app.use("/api/users", userRouter);
+app.use("/api/cinemas", cinemaRouter);
 
 app.get("/", (req, res, next) => {
   res.send("test");
@@ -59,6 +61,8 @@ app.use((err, req, res, next) => {
       stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
     });
   }
+
+  console.log(err);
 
   res.status(500).json({
     status: "error",
