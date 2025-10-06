@@ -13,12 +13,15 @@ const {
   areUrlIdsInterconnected,
 } = require("../middlewares/movie");
 const { checkReviewCountPerUser } = require("../middlewares/review");
-const { validateReviewSchema } = require("../middlewares/validators");
+const {
+  validateReviewSchema,
+  validateMovieSchema,
+} = require("../middlewares/validators");
 
 router
   .route("/")
   .get(movieController.getAllMovies)
-  .post(authenticate, isAdmin, movieController.addMovie);
+  .post(authenticate, isAdmin, validateMovieSchema, movieController.addMovie);
 
 router
   .route("/:movieId")
