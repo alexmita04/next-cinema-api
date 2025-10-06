@@ -11,6 +11,7 @@ const db = require("./config/db");
 const ExpressError = require("./utils/ExpressError");
 const userRouter = require("./routes/user");
 const cinemaRouter = require("./routes/cinema");
+const movieRouter = require("./routes/movie");
 
 // Essential Middleware
 app.use(express.json());
@@ -40,10 +41,7 @@ app.use(cookieParser());
 
 app.use("/api/users", userRouter);
 app.use("/api/cinemas", cinemaRouter);
-
-app.get("/", (req, res, next) => {
-  res.send("test");
-});
+app.use("/api/movies", movieRouter);
 
 app.use((req, res, next) => {
   next(new ExpressError(`Not Found - ${req.originalUrl}`, 404));

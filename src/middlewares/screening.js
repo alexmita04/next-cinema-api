@@ -107,22 +107,16 @@ exports.checkStartTimeUpdate = catchAsync(async (req, res, next) => {
 exports.areUrlIdsInterconnected = catchAsync(async (req, res, next) => {
   const { cinemaId, auditoriumId, screeningId = null } = req.params;
 
-  let interconnected = true;
-
   const cinema = await Cinema.findById(cinemaId);
 
   const cinemaContainsAuditorium = cinema.auditoriums.some((auditorium) =>
     auditorium.equals(auditoriumId)
   );
 
-  console.log(cinemaContainsAuditorium);
-  console.log(cinema);
-  console.log(auditoriumId);
-
   if (!cinemaContainsAuditorium)
     return next(
       new ExpressError(
-        "Some of the following ids don't match: CinemaId, AuditoriumId, ScreeningId",
+        "Some of the following ids don't match: cinemaId, auditoriumId, screeningId",
         404
       )
     );

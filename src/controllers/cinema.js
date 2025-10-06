@@ -185,13 +185,20 @@ exports.updateScreening = catchAsync(async (req, res, next) => {
 
   const utcDate = utcDate(date);
 
-  const screening = await Screening.findByIdAndUpdate(screeningId, {
-    date: utcDate,
-    starTime,
-    price,
-    language,
-    subtitle,
-  });
+  const screening = await Screening.findByIdAndUpdate(
+    screeningId,
+    {
+      date: utcDate,
+      starTime,
+      price,
+      language,
+      subtitle,
+    },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   if (!screening) {
     return next(new ExpressError("No screening found with this id", 404));
