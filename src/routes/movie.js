@@ -12,6 +12,7 @@ const {
   checkIfMovieCanBeUpdated,
   areUrlIdsInterconnected,
 } = require("../middlewares/movie");
+const { checkReviewCountPerUser } = require("../middlewares/review");
 
 router
   .route("/")
@@ -29,7 +30,12 @@ router.route("/:movieId/screenings").get(movieController.getAllScreenings);
 router
   .route("/:movieId/reviews")
   .get(movieController.getAllReviews)
-  .post(authenticate, isUser, movieController.createReview);
+  .post(
+    authenticate,
+    isUser,
+    checkReviewCountPerUser,
+    movieController.createReview
+  );
 
 router
   .route("/:movieId/reviews/:reviewId")
