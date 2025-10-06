@@ -5,7 +5,7 @@ const Review = require("../models/review");
 exports.checkReviewCountPerUser = catchAsync(async (req, res, next) => {
   const reviews = await Review.find({ author: req.user._id });
 
-  if (reviews) {
+  if (reviews.length) {
     return next(
       new ExpressError("You already have an review on this movie!", 409)
     );

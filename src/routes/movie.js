@@ -13,6 +13,7 @@ const {
   areUrlIdsInterconnected,
 } = require("../middlewares/movie");
 const { checkReviewCountPerUser } = require("../middlewares/review");
+const { validateReviewSchema } = require("../middlewares/validators");
 
 router
   .route("/")
@@ -34,6 +35,7 @@ router
     authenticate,
     isUser,
     checkReviewCountPerUser,
+    validateReviewSchema,
     movieController.createReview
   );
 
