@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const movieController = require("../controllers/movie");
-const { authenticate, isAdmin, isUser } = require("../middlewares/auth");
+const {
+  authenticate,
+  isAdmin,
+  isUser,
+  isMovieOwner,
+  isReviewOwner,
+} = require("../middlewares/auth");
 const {
   checkIfMovieCanBeUpdated,
   areUrlIdsInterconnected,
@@ -15,13 +21,8 @@ router
 router
   .route("/:movieId")
   .get(movieController.getMovie)
-  .put(
-    authenticate,
-    isAdmin,
-    // checkIfMovieCanBeUpdated,
-    movieController.updateMovie
-  )
-  .delete(authenticate, isAdmin, movieController.deleteMovie);
+  .put(authenticate, isAdmin, isMovieOwner, movieController.updateMovie)
+  .delete(authenticate, isAdmin, isMovieOwner, movieController.deleteMovie);
 
 router.route("/:movieId/screenings").get(movieController.getAllScreenings);
 
@@ -36,12 +37,14 @@ router
     authenticate,
     isUser,
     areUrlIdsInterconnected,
+    isReviewOwner,
     movieController.updateReview
   )
   .delete(
     authenticate,
     isUser,
     areUrlIdsInterconnected,
+    isReviewOwner,
     movieController.deleteReview
   );
 

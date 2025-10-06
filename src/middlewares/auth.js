@@ -3,6 +3,8 @@ const User = require("../models/user");
 const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
 const Screening = require("../models/screening");
+const Movie = require("../models/movie");
+const Review = require("../models/review");
 
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 
@@ -68,6 +70,38 @@ const isScreeningOwner = catchAsync(async (req, res, next) => {
   next();
 });
 
+const isMovieOwner = catchAsync(async (req, res, next) => {
+  const { movieId } = req.params;
+
+  const movie = await Movie.findById(movieId);
+
+  if (!movie) {
+    return next(new ExpressError("No movie found with this id", 404));
+  }
+
+  if (!movie.creator.equals(req.user._id)) {
+    return next(new ExpressError("You are not allowed to do that", 403));
+  }
+
+  next();
+});
+
+const isReviewOwner = catchAsync(async (req, res, next) => {
+  const { reviewId } = req.params;
+
+  const review = await Review.findById(reviewId);
+
+  if (!review) {
+    return next(new ExpressError("No reviews found with this id", 404));
+  }
+
+  if (!review.author.equals(req.user._id)) {
+    return next(new ExpressError("You are not allowed to do that", 403));
+  }
+
+  next();
+});
+
 module.exports = {
   generateAccessToken,
   generateRefreshToken,
@@ -77,4 +111,6 @@ module.exports = {
   isAdmin,
   isUser,
   isScreeningOwner,
+  isMovieOwner,
+  isReviewOwner,
 };
