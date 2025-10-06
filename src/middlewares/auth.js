@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const ExpressError = require("../utils/ExpressError");
+const catchAsync = require("../utils/catchAsync");
+const Screening = require("../models/screening");
 
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 
@@ -50,6 +52,22 @@ const isUser = (req, res, next) => {
   next();
 };
 
+const isScreeningOwner = catchAsync(async (req, res, next) => {
+  const { screeningId } = req.params;
+
+  const screening = await Screening.findById(screeningId);
+
+  if (!screening) {
+    return next(new ExpressError("No screening found with this id", 404));
+  }
+
+  if (!screening.createdBy.equals(req.user._id)) {
+    return next(new ExpressError("You are not allowed to do that", 403));
+  }
+
+  next();
+});
+
 module.exports = {
   generateAccessToken,
   generateRefreshToken,
@@ -58,4 +76,5 @@ module.exports = {
   REFRESH_TOKEN_SECRET,
   isAdmin,
   isUser,
+  isScreeningOwner,
 };

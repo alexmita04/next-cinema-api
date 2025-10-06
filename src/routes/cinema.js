@@ -1,7 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const cinemaController = require("../controllers/cinema");
-const { authenticate, isUser, isAdmin } = require("../middlewares/auth");
+const {
+  authenticate,
+  isUser,
+  isAdmin,
+  isScreeningOwner,
+} = require("../middlewares/auth");
 const {
   checkStartTime,
   checkStartTimeUpdate,
@@ -37,6 +42,7 @@ router
     authenticate,
     isAdmin,
     areUrlIdsInterconnected,
+    isScreeningOwner,
     checkStartTimeUpdate,
     cinemaController.updateScreening
   )
@@ -44,6 +50,7 @@ router
     authenticate,
     isAdmin,
     areUrlIdsInterconnected,
+    isScreeningOwner,
     cinemaController.deleteScreening
   );
 

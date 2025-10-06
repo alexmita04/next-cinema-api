@@ -148,6 +148,7 @@ exports.createScreeningInAnAuditorium = catchAsync(async (req, res, next) => {
     pricing,
     language,
     subtitle,
+    createdBy: req.user._id,
   });
 
   await newScreening.save();
@@ -183,12 +184,12 @@ exports.updateScreening = catchAsync(async (req, res, next) => {
   const { cinemaId, auditoriumId, screeningId } = req.params;
   const { date, starTime, price, language, subtitle } = req.body;
 
-  const utcDate = utcDate(date);
+  const correctDate = utcDate(date);
 
   const screening = await Screening.findByIdAndUpdate(
     screeningId,
     {
-      date: utcDate,
+      date: correctDate,
       starTime,
       price,
       language,
