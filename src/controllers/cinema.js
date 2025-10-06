@@ -126,9 +126,11 @@ exports.getAllScreeningsFromAnAuditorium = catchAsync(
 
     res.json({
       status: "success",
-      cinema,
-      screenings,
-      screenings_length: screenings.length,
+      data: {
+        cinema,
+        screenings,
+        screenings_length: screenings.length,
+      },
     });
   }
 );
@@ -155,7 +157,9 @@ exports.createScreeningInAnAuditorium = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    screening_created: newScreening,
+    data: {
+      screening_created: newScreening,
+    },
   });
 });
 
@@ -207,7 +211,7 @@ exports.updateScreening = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    screening,
+    data: { screening },
   });
 });
 
@@ -222,6 +226,8 @@ exports.deleteScreening = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    deletedScreening,
+    data: {
+      deletedScreening,
+    },
   });
 });

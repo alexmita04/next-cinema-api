@@ -20,8 +20,10 @@ exports.getAllMovies = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    movies,
-    length: movies.length,
+    data: {
+      movies,
+      length: movies.length,
+    },
   });
 });
 
@@ -63,7 +65,7 @@ exports.addMovie = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    newMovie,
+    data: { newMovie },
   });
 });
 
@@ -78,7 +80,7 @@ exports.getMovie = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    movie,
+    data: { movie },
   });
 });
 
@@ -108,7 +110,7 @@ exports.updateMovie = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    updatedMovie,
+    data: { updatedMovie },
   });
 });
 
@@ -123,7 +125,7 @@ exports.deleteMovie = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    deletedMovie,
+    data: { deletedMovie },
   });
 });
 
@@ -143,9 +145,11 @@ exports.getAllScreenings = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    movie,
-    screenings,
-    length: screenings.length,
+    data: {
+      movie,
+      screenings,
+      length: screenings.length,
+    },
   });
 });
 
@@ -162,9 +166,11 @@ exports.getAllReviews = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    movie,
-    review,
-    length: review.length,
+    data: {
+      movie,
+      review,
+      length: review.length,
+    },
   });
 });
 
@@ -189,8 +195,10 @@ exports.createReview = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    newReview,
-    movie,
+    data: {
+      newReview,
+      movie,
+    },
   });
 });
 
@@ -245,7 +253,9 @@ exports.deleteReview = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
-    deletedReview,
-    movie,
+    data: {
+      deletedReview,
+      movie,
+    },
   });
 });

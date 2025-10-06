@@ -140,7 +140,7 @@ exports.logout = catchAsync(async (req, res, next) => {
   try {
     const { refreshToken } = req.cookies;
 
-    const updatedUser = await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
       req.user._id,
       {
         $pull: { refreshTokens: { token: refreshToken } },
