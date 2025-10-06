@@ -14,6 +14,8 @@ const genres = [
   "Documentary",
 ];
 
+const screeningTypes = ["Scheduled", "Reccuring"];
+
 exports.reviewSchema = Joi.object({
   rating: Joi.number().min(0).max(5).required(),
   body: Joi.string().required(),
@@ -39,4 +41,13 @@ exports.movieSchema = Joi.object({
   distribution: Joi.string().required(),
   coverImage: Joi.string().required(),
   trailer: Joi.string().required(),
+});
+
+exports.screeningSchema = Joi.object({
+  movieId: Joi.string().required(),
+  date: Joi.date().required(),
+  startTime: Joi.number().required().min(0).max(24),
+  pricing: Joi.number().min(0).required(),
+  language: Joi.string().required(),
+  subtitle: Joi.string().required(),
 });

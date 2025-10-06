@@ -12,6 +12,7 @@ const {
   checkStartTimeUpdate,
   areUrlIdsInterconnected,
 } = require("../middlewares/screening");
+const { validateScreeningSchema } = require("../middlewares/validators");
 
 router.route("/").get(cinemaController.getAllCinemas);
 
@@ -31,6 +32,7 @@ router
     authenticate,
     isAdmin,
     areUrlIdsInterconnected,
+    validateScreeningSchema,
     checkStartTime,
     cinemaController.createScreeningInAnAuditorium
   );

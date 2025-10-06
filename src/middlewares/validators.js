@@ -1,5 +1,9 @@
 const Joi = require("joi");
-const { reviewSchema, movieSchema } = require("../utils/joiSchemas");
+const {
+  reviewSchema,
+  movieSchema,
+  screeningSchema,
+} = require("../utils/joiSchemas");
 const ExpressError = require("../utils/ExpressError");
 
 exports.validateReviewSchema = (req, res, next) => {
@@ -26,6 +30,21 @@ exports.validateMovieSchema = (req, res, next) => {
     next(
       new ExpressError(
         `Review Validation Failed: ${err.details[0].message}`,
+        400
+      )
+    );
+  }
+};
+
+exports.validateScreeningSchema = (req, res, next) => {
+  try {
+    Joi.assert(req.body, screeningSchema);
+
+    next();
+  } catch (err) {
+    next(
+      new ExpressError(
+        `Screening Validation Failed: ${err.details[0].message}`,
         400
       )
     );
