@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const Screening = require("./screening");
+const ExpressError = require("../utils/ExpressError");
 
 const ticketSchema = new Schema(
   {
@@ -60,6 +62,30 @@ ticketSchema.index(
     unique: true,
   }
 );
+
+ticketSchema.pre("save", async function (next) {
+  const seatNumber = this.seat.number;
+  const seatRow = this.seat.row;
+
+  const ticketScreening = await Screening.findById(this.screening).populate(
+    "auditorium"
+  );
+
+  const auditoriumRowCounter = ticketScreening.auditorium.seatLayout.rows;
+  const auditoriumNumberCounter =
+    ticketScreening.auditorium.seatLayout.seatsPerRow;
+
+  if (
+    seatNumber > auditoriumNumberCounter ||
+    seatNumber <= 0 ||
+    seatRow > auditoriumRowCounter ||
+    seatRow <= 0
+  ) {
+    throw new ExpressError("Wrong seat choice", 400);
+  }
+
+  next();
+});
 
 const Ticket = mongoose.model("Ticket", ticketSchema);
 
