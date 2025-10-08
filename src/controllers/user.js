@@ -7,6 +7,7 @@ const {
 } = require("../middlewares/auth");
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
+const Tickets = require("../models/ticket");
 
 exports.register = catchAsync(async (req, res, next) => {
   try {
@@ -184,6 +185,18 @@ exports.getProfile = catchAsync(async (req, res, next) => {
         createdAt,
         isAdmin,
       },
+    },
+  });
+});
+
+exports.getProfileTickets = catchAsync(async (req, res, next) => {
+  const userTickets = await Tickets.find({ customer: req.user._id });
+
+  res.json({
+    status: "success",
+    data: {
+      tickets: userTickets,
+      ticketsCounter: userTickets.length,
     },
   });
 });

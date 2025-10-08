@@ -14,4 +14,8 @@ router.route("/logout").post(authenticate, userController.logout);
 
 router.route("/profile").get(authenticate, userController.getProfile);
 
+router
+  .route("/profie/tickets")
+  .get(authenticate, userController.getProfileTickets);
+
 module.exports = router;
