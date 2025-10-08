@@ -1,6 +1,8 @@
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
 const Ticket = require("../models/ticket");
+const Joi = require("joi");
+const { ticketSchema } = require("../utils/joiSchemas");
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -72,6 +74,21 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
         seatNumber,
       } = session.metadata;
 
+      try {
+        Joi.assert(
+          {
+            totalPrice,
+            screening: screeningId,
+            customer: userId,
+            pricingCategory,
+            seat: { row: seatRow, number: seatNumber },
+          },
+          ticketSchema
+        );
+      } catch (err) {
+        return next(new ExpressError("Ticket validation failed", 400));
+      }
+
       const newTicket = new Ticket({
         totalPrice,
         screening: screeningId,
@@ -83,7 +100,7 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
         pricingCategory,
       });
 
-      console.log(newTicket);
+      await newTicket.save();
 
       break;
     case "payment_intent.succeeded":

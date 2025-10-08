@@ -32,6 +32,13 @@ const ticketSchema = new Schema(
         ],
       },
     },
+    totalPrice: {
+      type: Number,
+      required: [
+        true,
+        "The ticket totalPrice is mandatory and cannot be empty.",
+      ],
+    },
     pricingCategory: {
       type: String,
       enum: ["standard", "student"],

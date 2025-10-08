@@ -51,3 +51,16 @@ exports.screeningSchema = Joi.object({
   language: Joi.string().required(),
   subtitle: Joi.string().required(),
 });
+
+exports.ticketSchema = Joi.object({
+  totalPrice: Joi.number().required(),
+  screening: Joi.string().required(),
+  customer: Joi.string().required(),
+  seat: Joi.object({
+    row: Joi.number().required(),
+    number: Joi.number().required(),
+  }).required(),
+  pricingCategory: Joi.string()
+    .valid("standard", "student")
+    .default("standard"),
+});
