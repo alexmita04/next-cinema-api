@@ -27,7 +27,8 @@
     "helmet": "^8.1.0",
     "joi": "^18.0.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.18.3"
+    "mongoose": "^8.18.3",
+    "stripe": "^19.1.0"
   },
   "devDependencies": {
     "dotenv": "^17.2.3",
