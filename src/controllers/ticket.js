@@ -14,7 +14,13 @@ const stripe = require("stripe")(
 );
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
-  const { totalPrice, screeningId, userId, seat, pricingCategory } = req.body;
+  //   const { totalPrice, screeningId, userId, seat, pricingCategory } = req.body;
+
+  const { tickets } = req.body;
+  const ticketsCounter = tickets.length;
+
+  if (ticketsCounter <= 0)
+    return next(new ExpressError("Invalid number of tickets", 400));
 
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -32,13 +38,17 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
     mode: "payment",
     ui_mode: "embedded",
     return_url: "https://example.com/return?session_id={CHECKOUT_SESSION_ID}", // to be edited
+    // metadata: {
+    //   totalPrice,
+    //   screeningId,
+    //   userId,
+    //   seatRow: seat.row,
+    //   seatNumber: seat.number,
+    //   pricingCategory,
+    // },
     metadata: {
-      totalPrice,
-      screeningId,
-      userId,
-      seatRow: seat.row,
-      seatNumber: seat.number,
-      pricingCategory,
+      tickets,
+      ticketsCounter,
     },
   });
 
@@ -65,42 +75,58 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
   switch (event.type) {
     case "checkout.session.completed":
       const session = event.data.object;
-      const {
-        totalPrice,
-        screeningId,
-        userId,
-        pricingCategory,
-        seatRow,
-        seatNumber,
-      } = session.metadata;
+      //   const {
+      //     totalPrice,
+      //     screeningId,
+      //     userId,
+      //     pricingCategory,
+      //     seatRow,
+      //     seatNumber,
+      //   } = session.metadata;
 
-      try {
-        Joi.assert(
-          {
+      const { tickets, ticketsCounter } = session.metadata;
+      const fullFilledTickets = [];
+
+      for (const ticket of tickets) {
+        try {
+          const {
+            totalPrice,
+            screeningId,
+            userId,
+            pricingCategory,
+            seatRow,
+            seatNumber,
+          } = ticket;
+
+          Joi.assert(
+            {
+              totalPrice,
+              screening: screeningId,
+              customer: userId,
+              pricingCategory,
+              seat: { row: seatRow, number: seatNumber },
+            },
+            ticketSchema
+          );
+
+          const newTicket = new Ticket({
             totalPrice,
             screening: screeningId,
             customer: userId,
+            seat: {
+              row: seatRow,
+              number: seatNumber,
+            },
             pricingCategory,
-            seat: { row: seatRow, number: seatNumber },
-          },
-          ticketSchema
-        );
-      } catch (err) {
-        return next(new ExpressError("Ticket validation failed", 400));
+          });
+
+          await newTicket.save();
+
+          fullFilledTickets.push(newTicket);
+        } catch (err) {
+          return next(new ExpressError("Ticket validation failed", 400));
+        }
       }
-
-      const newTicket = new Ticket({
-        totalPrice,
-        screening: screeningId,
-        customer: userId,
-        seat: {
-          row: seatRow,
-          number: seatNumber,
-        },
-        pricingCategory,
-      });
-
-      await newTicket.save();
 
       break;
     case "payment_intent.succeeded":
@@ -116,6 +142,10 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
 
   res.json({
     status: "success",
+    data: {
+      fullFilledTickets,
+      length: fullFilledTickets.length,
+    },
   });
 });
 
