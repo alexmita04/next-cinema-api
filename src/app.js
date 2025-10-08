@@ -13,8 +13,15 @@ const userRouter = require("./routes/user");
 const cinemaRouter = require("./routes/cinema");
 const movieRouter = require("./routes/movie");
 const ticketRouter = require("./routes/ticket");
+const ticketController = require("./controllers/ticket");
 
 // Essential Middleware
+app.post(
+  "/api/stripe-webhook",
+  express.raw({ type: "application/json" }),
+  ticketController.webhookHandler
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
