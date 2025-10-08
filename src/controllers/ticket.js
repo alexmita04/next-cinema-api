@@ -1,5 +1,6 @@
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
+const Ticket = require("../models/ticket");
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -11,7 +12,7 @@ const stripe = require("stripe")(
 );
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
-  const { totalPrice } = req.body;
+  const { totalPrice, screeningId, userId, seat, pricingCategory } = req.body;
 
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -29,6 +30,21 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
     mode: "payment",
     ui_mode: "embedded",
     return_url: "https://example.com/return?session_id={CHECKOUT_SESSION_ID}", // to be edited
+    metadata: {
+      totalPrice,
+      screeningId,
+      userId,
+      seatRow: seat.row,
+      seatNumber: seat.number,
+      pricingCategory,
+    },
+  });
+
+  res.json({
+    status: "success",
+    data: {
+      clientSecret: session.client_secret,
+    },
   });
 });
 
@@ -47,19 +63,38 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
   switch (event.type) {
     case "checkout.session.completed":
       const session = event.data.object;
-      console.log(`🔔 Payment successful for session ${session.id}`);
+      const {
+        totalPrice,
+        screeningId,
+        userId,
+        pricingCategory,
+        seatRow,
+        seatNumber,
+      } = session.metadata;
+
+      const newTicket = new Ticket({
+        totalPrice,
+        screening: screeningId,
+        customer: userId,
+        seat: {
+          row: seatRow,
+          number: seatNumber,
+        },
+        pricingCategory,
+      });
+
+      console.log(newTicket);
+
       break;
     case "payment_intent.succeeded":
       const paymentIntent = event.data.object;
-      console.log(`🔔 PaymentIntent ${paymentIntent.id} succeeded`);
-      console.log(paymentIntent);
       break;
     case "payment_intent.payment_failed":
       const failedPayment = event.data.object;
-      console.log(`❌ Payment failed for PaymentIntent ${failedPayment.id}`);
+      return next(new ExpressError("Payment failed", 402));
       break;
     default:
-      console.log(`Unhandled event type ${event.type}`);
+    //   console.log(`Unhandled event type ${event.type}`);
   }
 
   res.json({

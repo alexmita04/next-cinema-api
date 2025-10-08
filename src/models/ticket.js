@@ -31,11 +31,11 @@ const ticketSchema = new Schema(
           "The ticket seat (number) is mandatory and cannot be empty.",
         ],
       },
-      pricingCategory: {
-        type: String,
-        enum: ["standard", "student"],
-        default: "standard",
-      },
+    },
+    pricingCategory: {
+      type: String,
+      enum: ["standard", "student"],
+      default: "standard",
     },
   },
   {
