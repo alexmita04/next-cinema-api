@@ -5,6 +5,7 @@ const Auditorium = require("../models/auditorium");
 const Movie = require("../models/movie");
 const ExpressError = require("../utils/ExpressError");
 const utcDate = require("../utils/utcDate");
+const Ticket = require("../models/ticket");
 
 const normalizeToUTCMidnight = (date) => {
   const newDate = new Date(
@@ -176,10 +177,15 @@ exports.getScreening = catchAsync(async (req, res, next) => {
     return next(new ExpressError("No screening found with this id", 404));
   }
 
+  const soldTickets = await Ticket.find({ screening: screening._id }).select(
+    "seat"
+  );
+
   res.json({
     status: "success",
     data: {
       screening,
+      soldTickets,
     },
   });
 });
