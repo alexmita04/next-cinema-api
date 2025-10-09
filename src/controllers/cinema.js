@@ -63,10 +63,6 @@ exports.getAllScreeningsFromACinema = catchAsync(async (req, res, next) => {
     return next(new ExpressError("No cinema found with this id", 404));
   }
 
-  if (!cinema) {
-    return next(new ExpressError("No cinema found with this id", 404));
-  }
-
   const screenings = await Screening.find({
     cinema: cinema._id,
     $or: [
