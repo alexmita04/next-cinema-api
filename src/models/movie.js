@@ -100,14 +100,6 @@ const movieSchema = new Schema(
       type: String,
       required: [true, "The movie trailer is mandatory and cannot be empty."],
     },
-    marketing: {
-      featured: {
-        type: Boolean,
-      },
-      priority: {
-        type: Number,
-      },
-    },
   },
   {
     timestamps: true,
