@@ -18,4 +18,8 @@ router
   .route("/profie/tickets")
   .get(authenticate, userController.getProfileTickets);
 
+router
+  .route("/reports/sales")
+  .get(authenticate, isAdmin, userController.getReportsSales);
+
 module.exports = router;

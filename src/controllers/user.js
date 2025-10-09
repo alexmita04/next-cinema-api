@@ -8,6 +8,18 @@ const {
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
 const Tickets = require("../models/ticket");
+const Cinema = require("../models/cinema");
+const Screening = require("../models/screening");
+const Ticket = require("../models/ticket");
+const utcDate = require("../utils/utcDate");
+
+const normalizeToUTCMidnight = (date) => {
+  const newDate = new Date(
+    Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate())
+  );
+
+  return newDate;
+};
 
 exports.register = catchAsync(async (req, res, next) => {
   try {
@@ -197,6 +209,45 @@ exports.getProfileTickets = catchAsync(async (req, res, next) => {
     data: {
       tickets: userTickets,
       ticketsCounter: userTickets.length,
+    },
+  });
+});
+
+exports.getReportsSales = catchAsync(async (req, res, next) => {
+  let { date } = req.query;
+
+  if (!date) date = normalizeToUTCMidnight(new Date(Date.now()));
+  else date = utcDate(date);
+
+  const adminId = req.user._id;
+
+  const cinema = await Cinema.find({ admin: adminId }).populate("auditoriums");
+
+  if (!cinema) {
+    return next(new ExpressError("No cinema found", 404));
+  }
+
+  const screenings = await Screening.find({ cinema: cinema._id, date });
+
+  const allTickets = [];
+  let totalSales = 0;
+  for (const screening of screenings) {
+    const tickets = await Ticket.find({ screening: screening._id });
+
+    for (const ticket of tickets) {
+      totalSales += ticket.totalPrice / 100;
+    }
+
+    allTickets.push({ screeningId: screening._id, tickets });
+  }
+
+  res.json({
+    status: "success",
+    data: {
+      cinema,
+      screenings,
+      allTickets,
+      totalSales,
     },
   });
 });

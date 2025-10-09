@@ -11,7 +11,6 @@ const createSlug = (title) => {
     .map((slugEl) => slugEl.toLowerCase())
     .join("-");
 
-  console.log(slug);
   return slug;
 };
 
