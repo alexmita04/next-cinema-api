@@ -202,7 +202,9 @@ exports.getProfile = catchAsync(async (req, res, next) => {
 });
 
 exports.getProfileTickets = catchAsync(async (req, res, next) => {
-  const userTickets = await Tickets.find({ customer: req.user._id });
+  const userTickets = await Tickets.find({ customer: req.user._id }).populate(
+    "screening"
+  );
 
   res.json({
     status: "success",
