@@ -6,12 +6,9 @@ const { ticketSchema } = require("../utils/joiSchemas");
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-const stripe = require("stripe")(
-  "sk_test_51SFH3gRElVTmok8XjZNAbx4RMyJE0j0f6sZkHfP7TwLayKAl5ASRnnqf7NCfJokr2y82h0PawUljFXjeHm58ELUx00bi5bPQWg",
-  {
-    apiVersion: "2025-03-31.basil",
-  }
-);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: "2025-03-31.basil",
+});
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
   //   const { totalPrice, screeningId, userId, seat, pricingCategory } = req.body;
