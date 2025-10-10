@@ -2,6 +2,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config({ path: "./src/config.env" });
 }
 const db = require("../config/db");
+const utcDate = require("../utils/utcDate");
 
 const Movie = require("../models/movie");
 const Auditorium = require("../models/auditorium");
@@ -17,7 +18,8 @@ const { ADMIN_PASSWORD, ADMIN_PUBLIC_PASSWORD } = process.env;
 
 const CINEMA_COUNTER = cinemaData.length;
 const AUDITORIUM_COUNTER = auditoriumData.length;
-const SCREENING_COUNTER = 2;
+const SCREENING_COUNTER_PER_DAY = 2;
+const SCREENING_COUNTER_DAYS = 5;
 
 const clearDatabase = async () => {
   await Screening.deleteMany({});
@@ -65,35 +67,37 @@ const populateDatabase = async () => {
       newCinema.auditoriums.push(newAuditorium);
 
       let currentHour = newCinema.openingHour;
-      for (let k = 0; k < SCREENING_COUNTER; k++) {
+      for (let k = 0; k < SCREENING_COUNTER_PER_DAY; k++) {
         const screeningMovie = getRandomMovie(movies);
         const endHour = Math.floor(screeningMovie.duration / 60) + 1;
         const now = Date.now();
         const currentDate = new Date(now);
-        const utcMidnight = new Date(
-          Date.UTC(
-            currentDate.getUTCFullYear(),
-            currentDate.getUTCMonth(),
-            currentDate.getUTCDate(),
-            0,
-            0,
-            0,
-            0
-          )
-        );
-        const newScreening = new Screening({
-          auditorium: newAuditorium._id,
-          movie: screeningMovie._id,
-          cinema: newCinema._id,
-          startTime: currentHour,
-          type: "Recurring",
-          pricing: Math.floor(Math.random() * 10) + 10,
-          language: "English (EN)",
-          subtitle: "English (EN)",
-          date: utcMidnight,
-        });
 
-        await newScreening.save();
+        for (let l = 0; l < SCREENING_COUNTER_DAYS; l++) {
+          const utcMidnight = new Date(
+            Date.UTC(
+              currentDate.getUTCFullYear(),
+              currentDate.getUTCMonth(),
+              currentDate.getUTCDate() + l,
+              0,
+              0,
+              0,
+              0
+            )
+          );
+          const newScreening = new Screening({
+            auditorium: newAuditorium._id,
+            movie: screeningMovie._id,
+            cinema: newCinema._id,
+            startTime: currentHour,
+            pricing: Math.floor(Math.random() * 10) + 10,
+            language: "English (EN)",
+            subtitle: "English (EN)",
+            date: utcMidnight,
+          });
+
+          await newScreening.save();
+        }
 
         currentHour = currentHour + endHour + 1;
       }

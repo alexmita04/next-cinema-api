@@ -35,11 +35,6 @@ const screeningSchema = new Schema(
         "The screening start time is mandatory and cannot be empty.",
       ],
     },
-    type: {
-      type: String,
-      enum: ["Scheduled", "Recurring"],
-      default: "Scheduled",
-    },
     pricing: {
       type: Number,
       required: [true, "The screening price is mandatory and cannot be empty."],

@@ -65,15 +65,10 @@ exports.getAllScreeningsFromACinema = catchAsync(async (req, res, next) => {
 
   const screenings = await Screening.find({
     cinema: cinema._id,
-    $or: [
-      {
-        date: {
-          $gte: startOfDay,
-          $lt: endOfDay,
-        },
-      },
-      { type: "Recurring" },
-    ],
+    date: {
+      $gte: startOfDay,
+      $lt: endOfDay,
+    },
   });
 
   res.json({
@@ -110,15 +105,10 @@ exports.getAllScreeningsFromAnAuditorium = catchAsync(
     const screenings = await Screening.find({
       cinema: cinemaId,
       auditorium: auditoriumId,
-      $or: [
-        {
-          date: {
-            $gte: startOfDay,
-            $lt: endOfDay,
-          },
-        },
-        { type: "Recurring" },
-      ],
+      date: {
+        $gte: startOfDay,
+        $lt: endOfDay,
+      },
     }).populate("movie");
 
     res.json({

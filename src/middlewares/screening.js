@@ -38,15 +38,10 @@ exports.checkStartTime = catchAsync(async (req, res, next) => {
 
   let screenings = await Screening.find({
     auditorium: auditoriumId,
-    $or: [
-      {
-        date: {
-          $gte: startOfDay,
-          $lt: endOfDay,
-        },
-      },
-      { type: "Recurring" },
-    ],
+    date: {
+      $gte: startOfDay,
+      $lt: endOfDay,
+    },
   }).populate("movie");
 
   const canBeProgrammed = canBeProgrammedFunc(screenings, startTime);
@@ -75,17 +70,10 @@ exports.checkStartTimeUpdate = catchAsync(async (req, res, next) => {
     $and: [
       { auditorium: auditoriumId },
       {
-        $or: [
-          {
-            date: {
-              $gte: startOfDay,
-              $lt: endOfDay,
-            },
-          },
-          {
-            type: "Recurring",
-          },
-        ],
+        date: {
+          $gte: startOfDay,
+          $lt: endOfDay,
+        },
       },
       { _id: { $ne: screeningId } },
     ],
