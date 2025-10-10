@@ -1,0 +1,349 @@
+[
+  {
+    "_id": "68e220c7e2307843c9426af1",
+
+    "title": "Schindler's List",
+
+    "description": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+
+    "slug": "schindlers-list",
+
+    "duration": 195,
+
+    "releaseDate": "1993-12-15T00:00:00.000Z",
+
+    "genres": ["Drama"],
+
+    "cast": [
+      {
+        "name": "Liam Neeson",
+
+        "characterName": "Oskar Schindler",
+
+        "_id": "68e220c7e2307843c9426af2"
+      },
+
+      {
+        "name": "Ben Kingsley",
+
+        "characterName": "Itzhak Stern",
+
+        "_id": "68e220c7e2307843c9426af3"
+      },
+
+      {
+        "name": "Ralph Fiennes",
+
+        "characterName": "Amon Goeth",
+
+        "_id": "68e220c7e2307843c9426af4"
+      }
+    ],
+
+    "director": "Steven Spielberg",
+
+    "production": "Universal Pictures",
+
+    "distribution": "Universal Pictures",
+
+    "coverImage": "https://resizing.flixster.com/T0OfKJgU0a1nllJbS1RV3cPL9QY=/206x305/v2/https://resizing.flixster.com/P3NTptLJcIlWlLQwZMTWcITYaoY=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzlmMTBiZGYxLTFjZTctNGZiZS05OGU4LTAxNGIzNGZmNTVlMy5qcGc=",
+
+    "trailer": "https://youtu.be/mxphAlJID9U",
+
+    "__v": 0,
+
+    "createdAt": "2025-10-05T07:39:51.636Z",
+
+    "updatedAt": "2025-10-05T07:39:51.636Z"
+  },
+
+  {
+    "_id": "68e220c7e2307843c9426ae5",
+
+    "title": "Goodfellas",
+
+    "description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito.",
+
+    "slug": "goodfellas",
+
+    "duration": 146,
+
+    "releaseDate": "1990-09-19T00:00:00.000Z",
+
+    "genres": ["Drama", "Thriller"],
+
+    "cast": [
+      {
+        "name": "Robert De Niro",
+
+        "characterName": "James Conway",
+
+        "_id": "68e220c7e2307843c9426ae6"
+      },
+
+      {
+        "name": "Ray Liotta",
+
+        "characterName": "Henry Hill",
+
+        "_id": "68e220c7e2307843c9426ae7"
+      },
+
+      {
+        "name": "Joe Pesci",
+
+        "characterName": "Tommy DeVito",
+
+        "_id": "68e220c7e2307843c9426ae8"
+      }
+    ],
+
+    "director": "Martin Scorsese",
+
+    "production": "Warner Bros. Pictures",
+
+    "distribution": "Warner Bros. Pictures",
+
+    "coverImage": "https://resizing.flixster.com/L2rTMze6IaTIK7PoxWwv9D2wcIs=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p12720_v_v13_bc.jpg",
+
+    "trailer": "https://youtu.be/2ilzidi_J8Q",
+
+    "__v": 0,
+
+    "createdAt": "2025-10-05T07:39:51.635Z",
+
+    "updatedAt": "2025-10-05T07:39:51.635Z"
+  },
+
+  {
+    "_id": "68e220c7e2307843c9426b05",
+
+    "title": "Casablanca",
+
+    "description": "A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.",
+
+    "slug": "casablanca",
+
+    "duration": 102,
+
+    "releaseDate": "1942-11-26T00:00:00.000Z",
+
+    "genres": ["Drama", "Romance"],
+
+    "cast": [
+      {
+        "name": "Humphrey Bogart",
+
+        "characterName": "Rick Blaine",
+
+        "_id": "68e220c7e2307843c9426b06"
+      },
+
+      {
+        "name": "Ingrid Bergman",
+
+        "characterName": "Ilsa Lund",
+
+        "_id": "68e220c7e2307843c9426b07"
+      },
+
+      {
+        "name": "Paul Henreid",
+
+        "characterName": "Victor Laszlo",
+
+        "_id": "68e220c7e2307843c9426b08"
+      }
+    ],
+
+    "director": "Michael Curtiz",
+
+    "production": "Warner Bros. Pictures",
+
+    "distribution": "Warner Bros. Pictures",
+
+    "coverImage": "https://resizing.flixster.com/mGddwTkglVfMnXfPeAiREHf_Ne0=/206x305/v2/https://resizing.flixster.com/wcaZelGoDPS575ju3tWP7-tBM20=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzUxNjQ2ZTQzLTJlNmItNGViYS05MDYyLWIzYTY5YzNhMzI3NS5qcGc=",
+
+    "trailer": "https://youtu.be/MF7JH_54d8c",
+
+    "__v": 0,
+
+    "createdAt": "2025-10-05T07:39:51.636Z",
+
+    "updatedAt": "2025-10-05T07:39:51.636Z"
+  },
+
+  {
+    "_id": "68e220c7e2307843c9426b09",
+
+    "title": "Blade Runner 2049",
+
+    "description": "Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing for thirty years.",
+
+    "slug": "blade-runner-2049",
+
+    "duration": 164,
+
+    "releaseDate": "2017-10-06T00:00:00.000Z",
+
+    "genres": ["SF", "Thriller"],
+
+    "cast": [
+      {
+        "name": "Ryan Gosling",
+
+        "characterName": "Officer K",
+
+        "_id": "68e220c7e2307843c9426b0a"
+      },
+
+      {
+        "name": "Harrison Ford",
+
+        "characterName": "Rick Deckard",
+
+        "_id": "68e220c7e2307843c9426b0b"
+      },
+
+      {
+        "name": "Ana de Armas",
+
+        "characterName": "Joi",
+
+        "_id": "68e220c7e2307843c9426b0c"
+      }
+    ],
+
+    "director": "Denis Villeneuve",
+
+    "production": "Warner Bros. Pictures",
+
+    "distribution": "Warner Bros. Pictures",
+
+    "coverImage": "https://resizing.flixster.com/e0yEXMKWcKU8_JJ4i3vu45poKbI=/206x305/v2/https://resizing.flixster.com/73VCeyfsM8UDQ0o7IjUIcXr7jd8=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2RlNzI0MGQyLTQ2ZTktNGMyYi05N2VmLTFjMDhiY2VlMDQ2Ni53ZWJw",
+
+    "trailer": "https://youtu.be/gCcx85zbxz4",
+
+    "__v": 0,
+
+    "createdAt": "2025-10-05T07:39:51.636Z",
+
+    "updatedAt": "2025-10-05T07:39:51.636Z"
+  },
+
+  {
+    "_id": "68e220c7e2307843c9426a95",
+
+    "title": "The Shawshank Redemption",
+
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+
+    "slug": "the-shawshank-redemption",
+
+    "duration": 142,
+
+    "releaseDate": "1994-09-23T00:00:00.000Z",
+
+    "genres": ["Drama"],
+
+    "cast": [
+      {
+        "name": "Tim Robbins",
+
+        "characterName": "Andy Dufresne",
+
+        "_id": "68e220c7e2307843c9426a96"
+      },
+
+      {
+        "name": "Morgan Freeman",
+
+        "characterName": "Ellis Boyd 'Red' Redding",
+
+        "_id": "68e220c7e2307843c9426a97"
+      },
+
+      {
+        "name": "Bob Gunton",
+
+        "characterName": "Warden Norton",
+
+        "_id": "68e220c7e2307843c9426a98"
+      }
+    ],
+
+    "director": "Frank Darabont",
+
+    "production": "Castle Rock Entertainment",
+
+    "distribution": "Columbia Pictures",
+
+    "coverImage": "https://resizing.flixster.com/hgcQ8juhhUYQofbQ6wsXfhicb3Y=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p15987_p_v13_ap.jpg",
+
+    "trailer": "https://www.youtube.com/watch?v=PLl99DlL6b4&pp=ygUYVGhlIFNoYXdzaGFuayBSZWRlbXB0aW9u",
+
+    "__v": 0,
+
+    "createdAt": "2025-10-05T07:39:51.634Z",
+
+    "updatedAt": "2025-10-05T07:39:51.634Z"
+  },
+
+  {
+    "_id": "68e220c7e2307843c9426aa5",
+
+    "title": "Inception",
+
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+
+    "slug": "inception",
+
+    "duration": 148,
+
+    "releaseDate": "2010-07-16T00:00:00.000Z",
+
+    "genres": ["Action", "SF", "Thriller"],
+
+    "cast": [
+      {
+        "name": "Leonardo DiCaprio",
+
+        "characterName": "Dom Cobb",
+
+        "_id": "68e220c7e2307843c9426aa6"
+      },
+
+      {
+        "name": "Joseph Gordon-Levitt",
+
+        "characterName": "Arthur",
+
+        "_id": "68e220c7e2307843c9426aa7"
+      },
+
+      {
+        "name": "Ellen Page",
+
+        "characterName": "Ariadne",
+
+        "_id": "68e220c7e2307843c9426aa8"
+      }
+    ],
+
+    "director": "Christopher Nolan",
+
+    "production": "Warner Bros. Pictures",
+
+    "distribution": "Warner Bros. Pictures",
+
+    "coverImage": "https://resizing.flixster.com/2HAZD3mRXq8DSdsOvBiGf5Kn8HI=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p7825626_p_v10_ae.jpg",
+
+    "trailer": "https://youtu.be/YoHD9XEInc0",
+
+    "__v": 0,
+
+    "createdAt": "2025-10-05T07:39:51.635Z",
+
+    "updatedAt": "2025-10-05T07:39:51.635Z"
+  }
+]

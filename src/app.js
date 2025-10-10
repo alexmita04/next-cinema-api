@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config({ path: "./src/config.env" });
+}
+
 // Express App Object
 const express = require("express");
 const app = express();
@@ -7,7 +11,6 @@ const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser");
-const db = require("./config/db");
 const ExpressError = require("./utils/ExpressError");
 const userRouter = require("./routes/user");
 const cinemaRouter = require("./routes/cinema");
