@@ -21,7 +21,7 @@ exports.getAllCinemas = catchAsync(async (req, res, next) => {
     status: "success",
     data: {
       cinemas,
-      cinemas_length: cinemas.length,
+      length: cinemas.length,
     },
   });
 });

@@ -1,0 +1,65 @@
+[
+  {
+    "_id": "68e220c7e2307843c9426b0e",
+    "name": "Next Cinema Hollywood Nights",
+    "location": "Sunset Boulevard, Hollywood, LA",
+    "auditoriums": [
+      "68e220c7e2307843c9426b0f",
+      "68e220c7e2307843c9426b16",
+      "68e220c8e2307843c9426b1d",
+      "68e220c8e2307843c9426b24",
+      "68e220c8e2307843c9426b2b",
+      "68e220c8e2307843c9426b32"
+    ],
+    "openingHour": 11,
+    "closingHour": 23,
+    "email": "hollywoodnights@nextcinema.com",
+    "parking": true,
+    "admin": "68e220c8e2307843c9426b39",
+    "createdAt": "2025-10-05T07:39:52.941Z",
+    "updatedAt": "2025-10-05T07:39:52.941Z",
+    "__v": 0
+  },
+  {
+    "_id": "68e220c8e2307843c9426b3c",
+    "name": "The Next Cinema Downtown Oasis",
+    "location": "Figueroa Street, Downtown LA",
+    "auditoriums": [
+      "68e220c8e2307843c9426b3d",
+      "68e220c9e2307843c9426b44",
+      "68e220c9e2307843c9426b4b",
+      "68e220c9e2307843c9426b52",
+      "68e220c9e2307843c9426b59",
+      "68e220c9e2307843c9426b60"
+    ],
+    "openingHour": 10,
+    "closingHour": 22,
+    "email": "downtowneoasis@nextcinema.com",
+    "parking": false,
+    "admin": "68e220c9e2307843c9426b67",
+    "createdAt": "2025-10-05T07:39:54.335Z",
+    "updatedAt": "2025-10-05T07:39:54.335Z",
+    "__v": 0
+  },
+  {
+    "_id": "68e220cae2307843c9426b6a",
+    "name": "Next Cinema Santa Monica Pier View",
+    "location": "Ocean Avenue, Santa Monica, LA",
+    "auditoriums": [
+      "68e220cae2307843c9426b6b",
+      "68e220cae2307843c9426b72",
+      "68e220cae2307843c9426b79",
+      "68e220cae2307843c9426b80",
+      "68e220cbe2307843c9426b87",
+      "68e220cbe2307843c9426b8e"
+    ],
+    "openingHour": 12,
+    "closingHour": 22,
+    "email": "pierview@nextcinema.com",
+    "parking": true,
+    "admin": "68e220cbe2307843c9426b95",
+    "createdAt": "2025-10-05T07:39:55.907Z",
+    "updatedAt": "2025-10-05T07:39:55.907Z",
+    "__v": 0
+  }
+]
