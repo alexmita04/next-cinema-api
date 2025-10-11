@@ -1,0 +1,42 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.*
+*.env
+src/config.env
+**/.env
+**/.*.env
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Tests
+**/*.test.js
+**/__tests__
+coverage
+
+# Development files
+.vscode
+.idea
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist
+build
+
+# Package manager files
+yarn.lock
+pnpm-lock.yaml

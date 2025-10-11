@@ -6,7 +6,6 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 
-const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
@@ -44,7 +43,10 @@ app.use(
   })
 );
 
-app.use(morgan("dev"));
+// if (process.env.NODE_ENV !== "production") {
+//   const morgan = require("morgan");
+//   app.use(morgan("dev"));
+// }
 app.use(helmet());
 
 const corsOptions = {
