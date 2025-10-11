@@ -16,6 +16,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "node --watch ./src/server.js",
+    "build": "echo 'No build step required for this Express API.'",
     "seed": "node ./src/seeding/seed.js",
     "test": "jest"
   },
