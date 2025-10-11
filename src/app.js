@@ -20,6 +20,15 @@ const ticketRouter = require("./routes/ticket");
 const ticketController = require("./controllers/ticket");
 
 // Essential Middleware
+app.use((req, res, next) => {
+  Object.defineProperty(req, "query", {
+    ...Object.getOwnPropertyDescriptor(req, "query"),
+    value: req.query,
+    writable: true,
+  });
+  next();
+});
+
 app.post(
   "/api/stripe-webhook",
   express.raw({ type: "application/json" }),
