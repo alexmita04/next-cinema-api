@@ -29,6 +29,12 @@ app.post(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(
+  mongoSanitize({
+    replaceWith: "_",
+  })
+);
+
 app.use(morgan("dev"));
 app.use(helmet());
 
@@ -50,12 +56,6 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use(cookieParser());
-
-app.use(
-  mongoSanitize({
-    replaceWith: "_",
-  })
-);
 
 app.use("/api/users", userRouter);
 app.use("/api/cinemas", cinemaRouter);
