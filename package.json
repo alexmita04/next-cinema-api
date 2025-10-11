@@ -29,6 +29,7 @@
     "joi": "^18.0.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.3",
+    "node-cron": "^4.2.1",
     "stripe": "^19.1.0"
   },
   "devDependencies": {

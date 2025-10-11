@@ -1,8 +1,8 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config({ path: "./src/config.env" });
-}
-const db = require("../config/db");
-const utcDate = require("../utils/utcDate");
+// if (process.env.NODE_ENV !== "production") {
+//   require("dotenv").config({ path: "./src/config.env" });
+// }
+// const db = require("../config/db");
+// const utcDate = require("../utils/utcDate");
 
 const Movie = require("../models/movie");
 const Auditorium = require("../models/auditorium");
@@ -114,7 +114,6 @@ const populateDatabase = async () => {
   }
 
   console.log("SEED-SUCCESS");
-  process.exit(0);
 };
 
-populateDatabase();
+module.exports = populateDatabase;
