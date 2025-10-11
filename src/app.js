@@ -11,6 +11,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser");
+const mongoSanitize = require("express-mongo-sanitize");
 const ExpressError = require("./utils/ExpressError");
 const userRouter = require("./routes/user");
 const cinemaRouter = require("./routes/cinema");
@@ -49,6 +50,12 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use(cookieParser());
+
+app.use(
+  mongoSanitize({
+    replaceWith: "_",
+  })
+);
 
 app.use("/api/users", userRouter);
 app.use("/api/cinemas", cinemaRouter);
