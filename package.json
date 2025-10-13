@@ -32,7 +32,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.3",
     "node-cron": "^4.2.1",
-    "stripe": "^19.1.0"
+    "stripe": "^19.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "dotenv": "^17.2.3",

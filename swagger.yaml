@@ -1,0 +1,756 @@
+openapi: 3.0.4
+info:
+  title: Next Cinema API Demo 1.0
+  description: |-
+    To be added
+
+    Some useful links:
+    - [Github Repo](https://github.com/alexmita04/next-cinema-api)
+  contact:
+    email: alexmita04@gmail.com
+  license:
+    name: MIT
+    url: https://opensource.org/license/mit
+  version: 1.0.0
+externalDocs:
+  description: Find more about the developer
+  url: tobeincluded
+servers:
+  - url: https://next-cinema-api.onrender.com
+tags:
+  - name: user
+    description: Operations about user
+  - name: cinema
+    description: Operations about cinema
+  - name: movies
+    description: Operations about movie
+  - name: tickets
+    description: Operations about ticket
+paths:
+  /api/users/login:
+    post:
+      tags:
+        - user
+      summary: Login an existing user and receive access tokens
+      description: |
+        Authenticates a user using their username and password.
+        On successful login, the server sets an **httpOnly, secure** `refreshToken` cookie
+        and returns a JSON payload containing the short-lived `accessToken` and user details.
+      operationId: loginUser
+      requestBody:
+        description: User credentials required for login.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        "200":
+          description: Successful login.
+          headers:
+            Set-Cookie:
+              description: The long-lived refresh token is set as an httpOnly, secure cookie.
+              schema:
+                type: string
+                example: refreshToken=eyJhbGciOiJIUzI1NiI...; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=604800000
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginSuccessResponse"
+        "400":
+          description: Bad Request - Missing mandatory fields (username or password).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: All fields are mandatory
+                statusCode: 400
+        "401":
+          description: Unauthorized - Invalid credentials.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Invalid Credentials
+                statusCode: 401
+        "500":
+          description: Internal Server Error - Unexpected server-side error during login.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Login Error
+                statusCode: 500
+  /api/users/register:
+    post:
+      tags:
+        - user
+      summary: Register a new user and receive access tokens
+      description: |
+        Creates a new user account with the provided details.
+
+        On successful registration, the server sets an **httpOnly, secure** `refreshToken` cookie
+        and returns a JSON payload containing the short-lived `accessToken` and minimal user details.
+      operationId: registerUser
+      requestBody:
+        description: User details required for account creation.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+      responses:
+        "201":
+          description: Successful account creation.
+          headers:
+            Set-Cookie:
+              description: The long-lived refresh token is set as an httpOnly, secure cookie.
+              schema:
+                type: string
+                example: refreshToken=eyJhbGciOiJIUzI1NiI...; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=604800000
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterSuccessResponse"
+        "400":
+          description: Bad Request - Missing mandatory fields or username already exists.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                missingFields:
+                  value:
+                    status: error
+                    message: All register fields are mandatory
+                    statusCode: 400
+                usernameExists:
+                  value:
+                    status: error
+                    message: The email is already used
+                    statusCode: 400
+        "500":
+          description: Internal Server Error - Unexpected server-side error during registration.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Register Error
+                statusCode: 500
+  /api/users/refresh:
+    post:
+      tags:
+        - user
+      summary: Refresh the access token using the refresh token cookie
+      description: |
+        Uses the **httpOnly, secure** `refreshToken` cookie, which is automatically
+        sent with the request, to verify the user and issue a new, short-lived 
+        `accessToken`. 
+
+        This endpoint is typically called when the current `accessToken` has expired.
+      operationId: refreshAccessToken
+      parameters:
+        - name: Cookie
+          in: header
+          description: The request must automatically send the httpOnly `refreshToken` cookie.
+          required: true
+          schema:
+            type: string
+            example: refreshToken=eyJhbGciOiJIUzI1NiI...
+      responses:
+        "200":
+          description: Access token successfully refreshed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RefreshSuccessResponse"
+        "401":
+          description: Unauthorized - Invalid or missing refresh token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                missingToken:
+                  value:
+                    status: error
+                    message: All fields are mandatory
+                    statusCode: 401
+                invalidToken:
+                  value:
+                    status: error
+                    message: Invalid Refresh Token
+                    statusCode: 401
+        "500":
+          description: Internal Server Error - Unexpected server-side error during refresh.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Invalid Refresh Token
+                statusCode: 500
+  /api/users/logout:
+    post:
+      tags:
+        - user
+      summary: Logout the current user by removing the refresh token
+      description: |
+        Invalidates the current session by removing the refresh token from the database
+        and clearing the `refreshToken` cookie from the client.
+
+        This operation requires the **`refreshToken`** to be present in the request's cookies
+        for successful token revocation.
+      operationId: logoutUser
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          description: Successfully logged out. The refresh token cookie is cleared.
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              example: refreshToken=deleted; Path=/; HttpOnly; Secure; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogoutSuccessResponse"
+        "401":
+          description: Unauthorized - The user is not authenticated (e.g., missing or invalid cookies).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Unauthorized - Please log in to get access.
+                statusCode: 401
+        "500":
+          description: Internal Server Error - An unexpected error occurred during logout.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Logout Error
+                statusCode: 500
+  /api/users/profile:
+    get:
+      tags:
+        - user
+      summary: Get the authenticated user's profile
+      description: Retrieves the detailed profile information for the currently logged-in user. Requires a valid `accessToken` to be passed in the Authorization header.
+      operationId: getProfile
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful retrieval of the user profile.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfileSuccessResponse"
+        "401":
+          description: Unauthorized - Access token is missing, invalid, or expired.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Invalid Token
+                statusCode: 401
+        "500":
+          description: Internal Server Error - Unexpected server-side error during profile retrieval.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Profile Retrieval Error
+                statusCode: 500
+  /api/reports/sales:
+    get:
+      tags:
+        - user
+      summary: Get sales report for a specific date
+      description: Retrieves sales data (total sales and ticket details) for a cinema managed by the authenticated admin for a given date. If no date is provided, it defaults to the current day (midnight UTC).
+      operationId: getReportSales
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+          description: The date for which to retrieve sales, in YYYY-MM-DD format. Defaults to today's date (UTC midnight).
+          example: "2025-10-12"
+      responses:
+        "200":
+          description: Sales report successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SalesReportsSuccessResponse"
+        "401":
+          description: Unauthorized - Access token is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: Unauthorized access
+                statusCode: 401
+        "404":
+          description: Not Found - No cinema found for the authenticated admin.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                status: error
+                message: No cinema found
+                statusCode: 404
+        "500":
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/cinemas:
+    get:
+      tags:
+        - cinema
+      summary: Retrieve a list of all cinemas
+      description: Returns an array of all cinema objects currently in the database.
+      operationId: getAllCinemas
+      responses:
+        "200":
+          description: Successfully retrieved the list of cinemas.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAllCinemasResponse"
+        "500":
+          description: Internal Server Error - Unexpected error during retrieval.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: refreshToken
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    LoginRequest:
+      type: object
+      description: The required fields for a user login attempt.
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: The user's unique username.
+          example: testuser123
+        password:
+          type: string
+          format: password
+          description: The user's secret password.
+          example: StrongP@ssw0rd!
+
+    RegisterRequest:
+      type: object
+      description: All fields required for creating a new user account.
+      required:
+        - username
+        - password
+        - dateOfBirth
+        - phoneNumber
+        - address
+      properties:
+        username:
+          type: string
+          description: The user's unique username (used for login, like an email).
+          example: newuser@example.com
+        password:
+          type: string
+          format: password
+          description: The user's secret password.
+          example: SecureP@ss123
+        dateOfBirth:
+          type: string
+          format: date
+          description: The user's date of birth.
+          example: 1990-01-01
+        gender:
+          type: string
+          description: The user's gender (optional in your code, but added for completeness).
+          enum: [male, female, other]
+          example: male
+        phoneNumber:
+          type: string
+          description: The user's phone number.
+          example: +40722123456
+        address:
+          type: string
+          description: The user's full address.
+          example: Str. Exemplului, Nr. 10, Bucuresti
+
+    UserLoggedIn:
+      type: object
+      description: The minimal user information returned upon successful login.
+      properties:
+        id:
+          type: string
+          description: The user's unique database ID.
+          example: 60a7e6b0c7a5f60015b3c5d8
+        username:
+          type: string
+          description: The user's username.
+          example: testuser123
+      required:
+        - id
+        - username
+
+    LoginSuccessResponse:
+      type: object
+      description: The successful response body for a login operation.
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Logged in
+            accessToken:
+              type: string
+              description: The short-lived JWT access token for API calls.
+              example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTdlNj
+            user:
+              $ref: "#/components/schemas/UserLoggedIn"
+          required:
+            - message
+            - accessToken
+            - user
+      required:
+        - status
+        - data
+
+    RegisterSuccessResponse:
+      type: object
+      description: The successful response body for a register operation.
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Account created
+            accessToken:
+              type: string
+              description: The short-lived JWT access token for API calls.
+              example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTdlNj
+            user:
+              $ref: "#/components/schemas/UserLoggedIn"
+          required:
+            - message
+            - accessToken
+            - user
+      required:
+        - status
+        - data
+
+    RefreshSuccessResponse:
+      type: object
+      description: The successful response body for an access token refresh operation.
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: object
+          properties:
+            accessToken:
+              type: string
+              description: The new short-lived JWT access token for API calls.
+              example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTdlNj
+          required:
+            - accessToken
+      required:
+        - status
+        - data
+
+    LogoutSuccessResponse:
+      type: object
+      description: The successful response body for a logout operation.
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Successfully logged out!
+          required:
+            - message
+      required:
+        - status
+        - data
+
+    UserProfile:
+      type: object
+      description: The comprehensive profile information for a user.
+      properties:
+        username:
+          type: string
+          description: The user's unique username.
+          example: testuser123
+        dateOfBirth:
+          type: string
+          format: date
+          description: The user's date of birth.
+          example: 1990-01-01
+        gender:
+          type: string
+          enum: [male, female, other]
+          description: The user's gender.
+          example: male
+        phoneNumber:
+          type: string
+          description: The user's contact phone number.
+          example: "+1-555-123-4567"
+        address:
+          type: string
+          description: The user's physical address.
+          example: 123 Main St, Anytown, USA
+        createdAt:
+          type: string
+          format: date-time
+          description: The timestamp when the user account was created.
+          example: 2021-05-21T10:30:00.000Z
+        isAdmin:
+          type: boolean
+          description: Flag indicating if the user has administrative privileges.
+          example: false
+      required:
+        - username
+        - createdAt
+        - isAdmin
+
+    ProfileSuccessResponse:
+      type: object
+      description: The successful response body for the get profile operation.
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: object
+          properties:
+            profileInformation:
+              $ref: "#/components/schemas/UserProfile"
+          required:
+            - profileInformation
+      required:
+        - status
+        - data
+
+    TicketDetails:
+      type: object
+      description: Details of a single ticket sold.
+      properties:
+        _id:
+          type: string
+          example: 60a7e6b0c7a5f60015b3c5d8
+        totalPrice:
+          type: number
+          description: The total price of the ticket in cents.
+          example: 1000
+      required:
+        - _id
+        - totalPrice
+
+    ScreeningTicketSummary:
+      type: object
+      description: Summary of tickets sold for a specific screening.
+      properties:
+        screeningId:
+          type: string
+          description: The ID of the screening.
+          example: 60a7e6b0c7a5f60015b3c5d9
+        tickets:
+          type: array
+          items:
+            $ref: "#/components/schemas/TicketDetails"
+      required:
+        - screeningId
+        - tickets
+
+    CinemaDetails:
+      type: object
+      description: Basic cinema details.
+      properties:
+        _id:
+          type: string
+          example: 60a7e6b0c7a5f60015b3c5da
+        name:
+          type: string
+          example: Grand Cinema
+        auditoriums:
+          type: array
+          description: A list of the cinema's auditorium IDs.
+          items:
+            type: string
+            example: 60a7e6b0c7a5f60015b3c5db
+      required:
+        - _id
+        - name
+        - auditoriums
+
+    SalesData:
+      type: object
+      description: The core sales report data.
+      properties:
+        cinema:
+          $ref: "#/components/schemas/CinemaDetails"
+        screenings:
+          type: array
+          description: Array of screening objects (details omitted for brevity, but represent the full documents).
+          items:
+            type: object
+            example:
+              _id: 60a7e6b0c7a5f60015b3c5d9
+              movie: A Movie Title
+        allTickets:
+          type: array
+          items:
+            $ref: "#/components/schemas/ScreeningTicketSummary"
+        totalSales:
+          type: number
+          format: float
+          description: Total sales for the day in the local currency unit (not cents).
+          example: 1250.50
+      required:
+        - cinema
+        - screenings
+        - allTickets
+        - totalSales
+
+    SalesReportsSuccessResponse:
+      type: object
+      description: The successful response body for the sales report operation.
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          $ref: "#/components/schemas/SalesData"
+      required:
+        - status
+        - data
+
+    Cinema:
+      type: object
+      description: A cinema object containing its details.
+      properties:
+        id:
+          type: string
+          description: The unique ID of the cinema.
+          example: 60a7e6b0c7a5f60015b3c5d9
+        name:
+          type: string
+          description: The name of the cinema.
+          example: Cineplexx Baneasa
+        city:
+          type: string
+          description: The city where the cinema is located.
+          example: Bucharest
+        address:
+          type: string
+          description: The physical address of the cinema.
+          example: Şoseaua București-Ploiești 42D
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp of when the cinema record was created.
+          example: 2021-05-21T10:00:00.000Z
+      required:
+        - id
+        - name
+        - city
+        - address
+
+    GetAllCinemasResponse:
+      type: object
+      description: The successful response body for the getAllCinemas operation.
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: object
+          properties:
+            cinemas:
+              type: array
+              items:
+                $ref: "#/components/schemas/Cinema"
+              description: The array of cinema objects.
+            length:
+              type: integer
+              description: The number of cinemas returned.
+              example: 5
+          required:
+            - cinemas
+            - length
+      required:
+        - status
+        - data
+
+    # --- Error Schema (Matches ExpressError) ---
+    ErrorResponse:
+      type: object
+      description: Generic error structure returned by the API.
+      properties:
+        status:
+          type: string
+          description: The status flag (typically 'error').
+          example: error
+        message:
+          type: string
+          description: A detailed, human-readable error message.
+          example: Invalid Credentials
+        statusCode:
+          type: integer
+          description: The HTTP status code of the error.
+          example: 401

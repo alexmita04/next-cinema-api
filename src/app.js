@@ -11,6 +11,8 @@ const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser");
 const mongoSanitize = require("express-mongo-sanitize");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger");
 const ExpressError = require("./utils/ExpressError");
 const userRouter = require("./routes/user");
 const cinemaRouter = require("./routes/cinema");
@@ -68,6 +70,7 @@ app.use(limiter);
 
 app.use(cookieParser());
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/users", userRouter);
 app.use("/api/cinemas", cinemaRouter);
 app.use("/api/movies", movieRouter);
