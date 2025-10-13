@@ -1,7 +1,7 @@
 {
   "name": "next-cinema-api",
   "version": "1.0.0",
-  "description": "next-cinema-api",
+  "description": "A concise RESTful backend built with Node.js (Express) and MongoDB (Mongoose).",
   "homepage": "https://github.com/alexmita04/next-cinema-api#readme",
   "bugs": {
     "url": "https://github.com/alexmita04/next-cinema-api/issues"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/alexmita04/next-cinema-api.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "Mita Alexandru Serban",
   "type": "commonjs",
   "main": "server.js",
