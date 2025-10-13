@@ -7,7 +7,8 @@ const swaggerOptions = {
     info: {
       title: "Next Cinema API",
       version: "1.0.0",
-      description: "to be added...",
+      description:
+        "A concise RESTful backend built with Node.js (Express) and MongoDB (Mongoose).",
       contact: {
         name: "Mita Alexandru Serban",
         email: "alexmita04@gmail.com",
