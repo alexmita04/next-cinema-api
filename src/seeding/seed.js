@@ -9,6 +9,8 @@ const Auditorium = require("../models/auditorium");
 const Cinema = require("../models/cinema");
 const Screening = require("../models/screening");
 const User = require("../models/user");
+const Review = require("../models/review");
+const Ticket = require("../models/ticket");
 
 const movieData = require("./movies.json");
 const auditoriumData = require("./auditoriums.json");
@@ -19,7 +21,7 @@ const { ADMIN_PASSWORD, ADMIN_PUBLIC_PASSWORD } = process.env;
 const CINEMA_COUNTER = cinemaData.length;
 const AUDITORIUM_COUNTER = auditoriumData.length;
 const SCREENING_COUNTER_PER_DAY = 2;
-const SCREENING_COUNTER_DAYS = 5;
+const SCREENING_COUNTER_DAYS = 10;
 
 const clearDatabase = async () => {
   await Screening.deleteMany({});
@@ -27,6 +29,8 @@ const clearDatabase = async () => {
   await Cinema.deleteMany({});
   await Auditorium.deleteMany({});
   await Movie.deleteMany({});
+  await Review.deleteMany({});
+  await Ticket.deleteMany({});
 };
 
 const createAdmin = async (cinemaName, isPublic) => {
