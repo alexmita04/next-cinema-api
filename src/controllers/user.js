@@ -31,7 +31,7 @@ exports.register = catchAsync(async (req, res, next) => {
 
     const existingUser = await User.findOne({ username });
     if (existingUser) {
-      return next(new ExpressError("The email is already used", 400));
+      return next(new ExpressError("The username is already used", 400));
     }
 
     const newUser = new User({
