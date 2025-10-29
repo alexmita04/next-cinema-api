@@ -109,6 +109,7 @@ exports.login = catchAsync(async (req, res, next) => {
         user: {
           id: user._id,
           username: user.username,
+          isAdmin: user.isAdmin,
         },
       },
     });
