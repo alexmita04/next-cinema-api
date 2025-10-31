@@ -29,7 +29,7 @@ exports.validateMovieSchema = (req, res, next) => {
   } catch (err) {
     next(
       new ExpressError(
-        `Review Validation Failed: ${err.details[0].message}`,
+        `Movie Validation Failed: ${err.details[0].message}`,
         400
       )
     );
