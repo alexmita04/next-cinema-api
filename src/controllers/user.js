@@ -49,8 +49,8 @@ exports.register = catchAsync(async (req, res, next) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: true,
-      sameSite: true,
+      secure: false, // TO BE CHANGED WHEN FRONTEND IN PRODUCTION
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -96,8 +96,8 @@ exports.login = catchAsync(async (req, res, next) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: true,
-      sameSite: true,
+      secure: false, // TO BE CHANGED WHEN FRONTEND IN PRODUCTION
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
