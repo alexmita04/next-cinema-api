@@ -61,7 +61,7 @@ app.use(cors(corsOptions));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  limit: 100,
+  limit: 10000, // to be changed
   standardHeaders: "draft-8",
   legacyHeaders: false,
   ipv6Subnet: 56,
