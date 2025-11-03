@@ -69,7 +69,7 @@ exports.getAllScreeningsFromACinema = catchAsync(async (req, res, next) => {
       $gte: startOfDay,
       $lt: endOfDay,
     },
-  });
+  }).populate("movie auditorium");
 
   res.json({
     status: "success",
