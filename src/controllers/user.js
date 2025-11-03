@@ -176,27 +176,21 @@ exports.logout = catchAsync(async (req, res, next) => {
 });
 
 exports.getProfile = catchAsync(async (req, res, next) => {
-  const {
-    username,
-    dateOfBirth,
-    gender,
-    phoneNumber,
-    address,
-    createdAt,
-    isAdmin,
-  } = req.user;
+  const { username } = req.user;
+
+  const foundUser = await User.find({ username });
 
   res.json({
     status: "success",
     data: {
       profileInformation: {
         username,
-        dateOfBirth,
-        gender,
-        phoneNumber,
-        address,
-        createdAt,
-        isAdmin,
+        dateOfBirth: foundUser[0].dateOfBirth,
+        gender: foundUser[0].gender,
+        phoneNumber: foundUser[0].phoneNumber,
+        address: foundUser[0].address,
+        createdAt: foundUser[0].createdAt,
+        isAdmin: foundUser[0].isAdmin,
       },
     },
   });

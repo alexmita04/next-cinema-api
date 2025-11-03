@@ -16,9 +16,6 @@ const canBeProgrammedFunc = (screenings, startTime) => {
       startTime >= screening.startTime &&
       startTime < screening.startTime + durationInHours
     ) {
-      // console.log(startTime);
-      // console.log(screening.startTime);
-      // console.log(screening.startTime + durationInHours);
       canBeProgrammed = false;
       break;
     }

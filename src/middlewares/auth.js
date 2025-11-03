@@ -30,8 +30,6 @@ const authenticate = async (req, res, next) => {
       "username isAdmin"
     );
 
-    console.log(user);
-
     if (!user) {
       return next(new ExpressError("User invalid", 401));
     }
