@@ -12,6 +12,7 @@ const Cinema = require("../models/cinema");
 const Screening = require("../models/screening");
 const Ticket = require("../models/ticket");
 const utcDate = require("../utils/utcDate");
+const Movie = require("../models/movie");
 
 const normalizeToUTCMidnight = (date) => {
   const newDate = new Date(
@@ -200,6 +201,11 @@ exports.getProfileTickets = catchAsync(async (req, res, next) => {
   const userTickets = await Tickets.find({ customer: req.user._id }).populate(
     "screening"
   );
+
+  for (let ticket of userTickets) {
+    const movie = await Movie.findById(ticket.screening.movie);
+    ticket.screening.movie = movie;
+  }
 
   res.json({
     status: "success",
