@@ -137,7 +137,7 @@ router.route("/profile").get(authenticate, userController.getProfile);
  *         description: Unauthorized
  */
 router
-  .route("/profie/tickets")
+  .route("/profile/tickets")
   .get(authenticate, userController.getProfileTickets);
 
 /**
