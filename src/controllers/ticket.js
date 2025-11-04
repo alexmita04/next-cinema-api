@@ -49,8 +49,8 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
     //   pricingCategory,
     // },
     metadata: {
-      tickets,
-      ticketsCounter,
+      tickets: JSON.stringify(tickets),
+      ticketsCounter: JSON.stringify(ticketsCounter),
     },
   });
 
@@ -86,7 +86,8 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
       //     seatNumber,
       //   } = session.metadata;
 
-      const { tickets, ticketsCounter } = session.metadata;
+      const { stringTickets, ticketsCounter } = session.metadata;
+      const tickets = JSON.parse(stringTickets);
       const fullFilledTickets = [];
 
       for (const ticket of tickets) {
