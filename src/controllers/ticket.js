@@ -19,6 +19,11 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
   if (ticketsCounter <= 0)
     return next(new ExpressError("Invalid number of tickets", 400));
 
+  let totalPrice = 0;
+  for (let ticket of tickets) {
+    totalPrice += ticket.totalPrice;
+  }
+
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
@@ -27,7 +32,7 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
           product_data: {
             name: "Cinema ticket(s)",
           },
-          unit_amount: totalPrice,
+          unit_amount: totalPrice * 100,
         },
         quantity: 1,
       },
