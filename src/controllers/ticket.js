@@ -39,7 +39,7 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
     ],
     mode: "payment",
     ui_mode: "embedded",
-    return_url: "https://example.com/return?session_id={CHECKOUT_SESSION_ID}", // to be edited
+    return_url: process.env.RETURN_TO_STRIPE, // to be edited
     // metadata: {
     //   totalPrice,
     //   screeningId,
