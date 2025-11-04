@@ -6,6 +6,13 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 
+const ticketController = require("./controllers/ticket");
+app.post(
+  "/api/stripe-webhook",
+  express.raw({ type: "application/json" }),
+  ticketController.webhookHandler
+);
+
 const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
@@ -18,7 +25,6 @@ const userRouter = require("./routes/user");
 const cinemaRouter = require("./routes/cinema");
 const movieRouter = require("./routes/movie");
 const ticketRouter = require("./routes/ticket");
-const ticketController = require("./controllers/ticket");
 
 // Essential Middleware
 app.use((req, res, next) => {
@@ -29,12 +35,6 @@ app.use((req, res, next) => {
   });
   next();
 });
-
-app.post(
-  "/api/stripe-webhook",
-  express.raw({ type: "application/json" }),
-  ticketController.webhookHandler
-);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

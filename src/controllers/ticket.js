@@ -65,6 +65,8 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
 exports.webhookHandler = catchAsync(async (req, res, next) => {
   const sig = req.headers["stripe-signature"];
 
+  console.log("alex esste cel mai tare");
+
   let event;
 
   try {
@@ -73,6 +75,8 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
     console.log(err);
     return next(new ExpressError("Stripe Webhook Error", 400));
   }
+
+  const fullFilledTickets = [];
 
   switch (event.type) {
     case "checkout.session.completed":
@@ -88,7 +92,6 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
 
       const { stringTickets, ticketsCounter } = session.metadata;
       const tickets = JSON.parse(stringTickets);
-      const fullFilledTickets = [];
 
       for (const ticket of tickets) {
         try {
