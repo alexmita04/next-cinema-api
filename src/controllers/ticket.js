@@ -19,6 +19,22 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
   if (ticketsCounter <= 0)
     return next(new ExpressError("Invalid number of tickets", 400));
 
+  for (let ticket of tickets) {
+    const existingTicket = await Ticket.findOne({
+      screeningId: ticket.screeningId,
+      seat: {
+        row: ticket.seatRow,
+        number: ticket.seatNumber,
+      },
+    });
+
+    if (existingTicket) {
+      return next(
+        new ExpressError("At least one of the seats is already booked")
+      );
+    }
+  }
+
   let totalPrice = 0;
   for (let ticket of tickets) {
     totalPrice += ticket.totalPrice;
@@ -65,8 +81,6 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
 exports.webhookHandler = catchAsync(async (req, res, next) => {
   const sig = req.headers["stripe-signature"];
 
-  console.log("alex esste cel mai tare");
-
   let event;
 
   try {
@@ -81,16 +95,8 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
   switch (event.type) {
     case "checkout.session.completed":
       const session = event.data.object;
-      //   const {
-      //     totalPrice,
-      //     screeningId,
-      //     userId,
-      //     pricingCategory,
-      //     seatRow,
-      //     seatNumber,
-      //   } = session.metadata;
 
-      const { stringTickets, ticketsCounter } = session.metadata;
+      const stringTickets = session.metadata.tickets;
       const tickets = JSON.parse(stringTickets);
 
       for (const ticket of tickets) {
@@ -130,7 +136,13 @@ exports.webhookHandler = catchAsync(async (req, res, next) => {
 
           fullFilledTickets.push(newTicket);
         } catch (err) {
-          return next(new ExpressError("Ticket validation failed", 400));
+          console.log(err);
+          return next(
+            new ExpressError(
+              "Ticket validation failed, the seats might already exists",
+              400
+            )
+          );
         }
       }
 
