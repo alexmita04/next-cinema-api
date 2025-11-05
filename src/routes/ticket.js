@@ -44,4 +44,8 @@ router
  */
 router.route("/session-status/:sessionId").get(ticketController.sessionStatus);
 
+router
+  .route("/screenings/:screeningId")
+  .get(ticketController.getTicketsForSpecificScreening);
+
 module.exports = router;

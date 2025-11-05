@@ -185,3 +185,18 @@ exports.sessionStatus = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getTicketsForSpecificScreening = catchAsync(async (req, res, next) => {
+  const { screeningId } = req.params;
+
+  const tickets = await Ticket.find({ screening: screeningId }).select("seat");
+  const ticketsCounter = tickets.length;
+
+  res.json({
+    status: "success",
+    data: {
+      tickets,
+      ticketsCounter,
+    },
+  });
+});
