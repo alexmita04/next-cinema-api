@@ -144,6 +144,7 @@ exports.refresh = catchAsync(async (req, res, next) => {
       status: "success",
       data: {
         accessToken: newAccessToken,
+        id: user._id,
       },
     });
   } catch (err) {
