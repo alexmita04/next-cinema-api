@@ -223,6 +223,9 @@ exports.getReportsSales = catchAsync(async (req, res, next) => {
   if (!date) date = normalizeToUTCMidnight(new Date(Date.now()));
   else date = utcDate(date);
 
+  const todayStart = newDate();
+  todayStart.setHours(0, 0, 0, 0);
+
   const adminId = req.user._id;
 
   const cinema = await Cinema.find({ admin: adminId }).populate("auditoriums");
@@ -231,7 +234,11 @@ exports.getReportsSales = catchAsync(async (req, res, next) => {
     return next(new ExpressError("No cinema found", 404));
   }
 
-  const screenings = await Screening.find({ cinema: cinema._id, date });
+  const screenings = await Screening.find({
+    cinema: cinema._id,
+    createdBy: adminId,
+    date: { $gte: todayStart },
+  });
 
   const allTickets = [];
   let totalSales = 0;
