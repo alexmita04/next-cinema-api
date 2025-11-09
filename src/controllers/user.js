@@ -223,7 +223,7 @@ exports.getReportsSales = catchAsync(async (req, res, next) => {
   if (!date) date = normalizeToUTCMidnight(new Date(Date.now()));
   else date = utcDate(date);
 
-  const todayStart = newDate();
+  const todayStart = new Date();
   todayStart.setHours(0, 0, 0, 0);
 
   const adminId = req.user._id;
