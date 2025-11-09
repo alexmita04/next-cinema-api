@@ -228,7 +228,9 @@ exports.getReportsSales = catchAsync(async (req, res, next) => {
 
   const adminId = req.user._id;
 
-  const cinema = await Cinema.find({ admin: adminId }).populate("auditoriums");
+  const cinema = await Cinema.findOne({ admin: adminId }).populate(
+    "auditoriums"
+  );
 
   if (!cinema) {
     return next(new ExpressError("No cinema found", 404));
@@ -240,16 +242,29 @@ exports.getReportsSales = catchAsync(async (req, res, next) => {
     date: { $gte: todayStart },
   });
 
+  const allScreenings = await Screening.find({
+    cinema: cinema._id,
+  }).populate("movie");
+
   const allTickets = [];
   let totalSales = 0;
-  for (const screening of screenings) {
-    const tickets = await Ticket.find({ screening: screening._id });
+  for (const screening of allScreenings) {
+    let tickets = await Ticket.find({ screening: screening._id }).lean();
 
-    for (const ticket of tickets) {
-      totalSales += ticket.totalPrice / 100;
+    if (tickets.length) {
+      for (const ticket of tickets) {
+        totalSales += ticket.totalPrice;
+      }
+
+      tickets = tickets.map((t) => {
+        return {
+          ...t,
+          movie: screening.movie.title,
+        };
+      });
     }
 
-    allTickets.push({ screeningId: screening._id, tickets });
+    allTickets.push(...tickets);
   }
 
   res.json({
