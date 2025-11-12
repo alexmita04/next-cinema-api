@@ -240,7 +240,7 @@ exports.getReportsSales = catchAsync(async (req, res, next) => {
     cinema: cinema._id,
     createdBy: adminId,
     date: { $gte: todayStart },
-  });
+  }).populate("movie");
 
   const allScreenings = await Screening.find({
     cinema: cinema._id,
