@@ -160,4 +160,24 @@ router
   .route("/reports/sales")
   .get(authenticate, isAdmin, userController.getReportsSales);
 
+/**
+ * @swagger
+ * /api/users/cinema:
+ *   get:
+ *     summary: Get cinema information (Admin only)
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Cinema information retrieved successfully
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden - Admin access required
+ */
+router
+  .route("/cinema")
+  .get(authenticate, isAdmin, userController.getCinemaInformation);
+
 module.exports = router;

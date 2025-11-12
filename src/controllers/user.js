@@ -277,3 +277,22 @@ exports.getReportsSales = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getCinemaInformation = catchAsync(async (req, res, next) => {
+  const adminId = req.user._id;
+
+  const cinema = await Cinema.findOne({ admin: adminId }).populate(
+    "auditoriums"
+  );
+
+  if (!cinema) {
+    return next(new ExpressError("Something went wrong! No cinema found"));
+  }
+
+  res.json({
+    status: "success",
+    data: {
+      cinema,
+    },
+  });
+});
