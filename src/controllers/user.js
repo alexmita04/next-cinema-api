@@ -145,6 +145,7 @@ exports.refresh = catchAsync(async (req, res, next) => {
       data: {
         accessToken: newAccessToken,
         id: user._id,
+        isAdmin: user.isAdmin,
       },
     });
   } catch (err) {
