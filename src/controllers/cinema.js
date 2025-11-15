@@ -178,7 +178,7 @@ exports.getScreening = catchAsync(async (req, res, next) => {
 
 exports.updateScreening = catchAsync(async (req, res, next) => {
   const { cinemaId, auditoriumId, screeningId } = req.params;
-  const { date, starTime, price, language, subtitle } = req.body;
+  const { date, startTime, price, language, subtitle } = req.body;
 
   const correctDate = utcDate(date);
 
@@ -186,8 +186,8 @@ exports.updateScreening = catchAsync(async (req, res, next) => {
     screeningId,
     {
       date: correctDate,
-      starTime,
-      price,
+      startTime,
+      pricing: price,
       language,
       subtitle,
     },
@@ -196,6 +196,8 @@ exports.updateScreening = catchAsync(async (req, res, next) => {
       runValidators: true,
     }
   );
+
+  console.log(screening);
 
   if (!screening) {
     return next(new ExpressError("No screening found with this id", 404));
