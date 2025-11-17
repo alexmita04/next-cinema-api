@@ -4,7 +4,7 @@ const cron = require("node-cron");
 const populateDatabase = require("./seeding/seed");
 
 const startCronJobs = () => {
-  cron.schedule("0 0 * * *", populateDatabase, {
+  cron.schedule("51 13 * * *", populateDatabase, {
     schedule: true,
     timezone: "UTC",
   });
