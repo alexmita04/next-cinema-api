@@ -2,14 +2,34 @@
 
 A concise **RESTful backend** built with **Node.js (Express)** and **MongoDB (Mongoose)** to power a cinema ticketing demo application.
 
+[**The API is live!**](https://next-cinema-api.onrender.com/api-docs/)
+
 This API features two core modules:
 
 1. **User Module:** Allows users to **browse movies**, check **seat availability**, and **purchase tickets**.
 2. **Admin Module:** Enables administrators to **manage cinema locations**, **movies**, and **screenings**.
 
+Admin credentials:
+
+- Username: NextCinemaRetro-admin
+- Password: adminpass1234
+
+**_There havent been any LLMs used for writing code in this project_**
+
+## Important Functionalities
+
+- **Seeding** functionality is scheduled using node cron. The seeding logic (creating movies, screenings, admins accounts, etc) is implemented in `seed.js`
+- I've utilized several utility functions:
+- **Validation schemas** are defined in `joiSchemas.js` and run **before** interacting with the database.
+  - **ExpressError** is an utility class for handling errors in the entire app
+  - **CatchAsync** is an utility function designed to wrap async operations and handle potential exceptions
+- API endpoints are documented using swagger and jsdoc
+- A **Global Error Handler** is implemented to respond with appropriate error messages based on the application's environment (**production** | **development**).
+- The `middlewares` directory contains the implementation for **Authentication (JWT)**, **Authorization**, and **internal checks** (e.g., a middleware function that validates the time interval for a screening).
+
 ## Dedicated Backend API
 
-- This service powers the application's functionality. For the client-side implementation, please see the **Frontend Repository: [to be added]**
+- This service powers the application's functionality. For the client-side implementation, please see the [**Frontend Repository**](https://next-cinema-frontend.onrender.com)
 - [**The API is live!**](https://next-cinema-api.onrender.com/api-docs/)
   - Please note that as it's hosted on a free tier, there may be a brief delay while the server wakes up on your first request:
 
@@ -78,6 +98,7 @@ ADMIN_PASSWORD=
 ADMIN_PUBLIC_PASSWORD=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
+RETURN_TO_STRIPE=
 ```
 
 ### Clone This Repo
@@ -97,8 +118,8 @@ STRIPE_WEBHOOK_SECRET=
 
 You can explore the available endpoints through the following resources:
 
-- [**Postman Workspace:**](https://www.postman.com/alexmita04/next-cinema-api-demo/collection/tuu8sta/next-cinema-api?action=share&creator=11284739)
-- [**Swagger UI:**](https://next-cinema-api.onrender.com/api-docs/) (Includes all endpoints, though some descriptions are currently pending completion.)
+- [**Postman Workspace**](https://www.postman.com/alexmita04/next-cinema-api-demo/collection/tuu8sta/next-cinema-api?action=share&creator=11284739)
+- [**Swagger UI**](https://next-cinema-api.onrender.com/api-docs/) (Includes all endpoints, though some descriptions are currently pending completion.)
 
 ### Important Endpoints
 
@@ -238,7 +259,7 @@ All E2E test files are located in the repository at: `./src/__test__`
 ## Contact
 
 - **Email:** alexmita04@gmail.com
-- [**LinkedIn:**](https://www.linkedin.com/in/alexandru-mita-ba74b2299/)
+- [**LinkedIn**](https://www.linkedin.com/in/alexandru-mita-ba74b2299/)
 
 ## License
 
