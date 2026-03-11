@@ -14,24 +14,24 @@ Admin credentials:
 - Username: NextCinemaRetro-admin
 - Password: adminpass1234
 
-**_There havent been any LLMs used for writing code in this project_**
+**_There havent been any LLMs used for writing code in this project_.**
 
 ## Important Functionalities
 
-- **Seeding** functionality is scheduled using node cron. The seeding logic (creating movies, screenings, admins accounts, etc) is implemented in `seed.js`
+- **Seeding** functionality is scheduled using node cron. The seeding logic (creating movies, screenings, admins accounts, etc) is implemented in `seed.js`.
 - I've utilized several utility functions:
-  - **ExpressError** is an utility class for handling errors in the entire app
-  - **CatchAsync** is an utility function designed to wrap async operations and handle potential exceptions
+  - **ExpressError** is an utility class for handling errors in the entire app.
+  - **CatchAsync** is an utility function designed to wrap async operations and handle potential exceptions.
 - **Validation schemas** are defined in `joiSchemas.js` and run **before** interacting with the database.
-- API endpoints are documented using swagger and jsdoc
+- API endpoints are documented using swagger and jsdoc.
 - A **Global Error Handler** is implemented to respond with appropriate error messages based on the application's environment (**production** | **development**).
 - The `middlewares` directory contains the implementation for **Authentication (JWT)**, **Authorization**, and **internal checks** (e.g., a middleware function that validates the time interval for a screening).
 
 ## Dedicated Backend API
 
-- This service powers the application's functionality. For the client-side implementation, please see the [**Frontend Repository**](https://next-cinema-frontend.onrender.com)
+- This service powers the application's functionality. For the client-side implementation, please see the [**Frontend Repository**](https://next-cinema-frontend.onrender.com).
 - [**The API is live!**](https://next-cinema-api.onrender.com/api-docs/)
-  - Please note that as it's hosted on a free tier, there may be a brief delay while the server wakes up on your first request:
+  - Please note that as it's hosted on a free tier, there may be a brief delay while the server wakes up on your first request.
 
 ## Table of Contents
 
@@ -119,7 +119,7 @@ RETURN_TO_STRIPE=
 You can explore the available endpoints through the following resources:
 
 - [**Postman Workspace**](https://www.postman.com/alexmita04/next-cinema-api-demo/collection/tuu8sta/next-cinema-api?action=share&creator=11284739)
-- [**Swagger UI**](https://next-cinema-api.onrender.com/api-docs/) (Includes all endpoints, though some descriptions are currently pending completion.)
+- [**Swagger UI**](https://next-cinema-api.onrender.com/api-docs/) (Includes all endpoints, though some descriptions are currently pending completion)
 
 ### Important Endpoints
 
@@ -254,7 +254,7 @@ Currently, E2E tests cover a **small but critical subset of endpoints**, primari
 
 For endpoints requiring authentication (like the `POST /api/movies` route), a **mocked authentication token** is generated and sent in the request header to simulate an authenticated admin user, allowing the test to verify the functionality protected by authorization.
 
-All E2E test files are located in the repository at: `./src/__test__`
+All E2E test files are located in the repository at: `./src/__test__`.
 
 ## Contact
 
