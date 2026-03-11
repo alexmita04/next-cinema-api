@@ -10,7 +10,7 @@ const ticketController = require("./controllers/ticket");
 app.post(
   "/api/stripe-webhook",
   express.raw({ type: "application/json" }),
-  ticketController.webhookHandler
+  ticketController.webhookHandler,
 );
 
 const helmet = require("helmet");
@@ -42,7 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   mongoSanitize({
     replaceWith: "_",
-  })
+  }),
 );
 
 // if (process.env.NODE_ENV !== "production") {

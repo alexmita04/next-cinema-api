@@ -86,8 +86,8 @@ const populateDatabase = async () => {
               0,
               0,
               0,
-              0
-            )
+              0,
+            ),
           );
           const newScreening = new Screening({
             auditorium: newAuditorium._id,
@@ -109,7 +109,7 @@ const populateDatabase = async () => {
 
     adminId = await createAdmin(
       newCinema.name,
-      i === CINEMA_COUNTER - 1 ? true : false
+      i === CINEMA_COUNTER - 1 ? true : false,
     );
 
     newCinema.admin = adminId;
