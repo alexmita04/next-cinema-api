@@ -20,9 +20,9 @@ Admin credentials:
 
 - **Seeding** functionality is scheduled using node cron. The seeding logic (creating movies, screenings, admins accounts, etc) is implemented in `seed.js`
 - I've utilized several utility functions:
-- **Validation schemas** are defined in `joiSchemas.js` and run **before** interacting with the database.
   - **ExpressError** is an utility class for handling errors in the entire app
   - **CatchAsync** is an utility function designed to wrap async operations and handle potential exceptions
+- **Validation schemas** are defined in `joiSchemas.js` and run **before** interacting with the database.
 - API endpoints are documented using swagger and jsdoc
 - A **Global Error Handler** is implemented to respond with appropriate error messages based on the application's environment (**production** | **development**).
 - The `middlewares` directory contains the implementation for **Authentication (JWT)**, **Authorization**, and **internal checks** (e.g., a middleware function that validates the time interval for a screening).
