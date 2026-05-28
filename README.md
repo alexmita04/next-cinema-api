@@ -18,7 +18,7 @@ Admin credentials:
 
 ## Important Functionalities
 
-- **Seeding** functionality is scheduled using node cron. The seeding logic (creating movies, screenings, admins accounts, etc) is implemented in `seed.js`.
+- **Seeding** functionality is scheduled using a github action every sunday. The seeding logic (creating movies, screenings, admins accounts, etc) is implemented in `seed.js`.
 - I've utilized several utility functions:
   - **ExpressError** is an utility class for handling errors in the entire app.
   - **CatchAsync** is an utility function designed to wrap async operations and handle potential exceptions.
