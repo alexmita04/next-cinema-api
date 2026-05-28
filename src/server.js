@@ -1,17 +1,7 @@
 const app = require("./app");
-const db = require("./config/db");
-const cron = require("node-cron");
-const populateDatabase = require("./seeding/seed");
-
-const startCronJobs = () => {
-  cron.schedule("15 15 * * *", populateDatabase, {
-    schedule: true,
-    timezone: "UTC",
-  });
-};
+require("./config/db");
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`listening to requests on port ${PORT}`);
-  startCronJobs();
 });

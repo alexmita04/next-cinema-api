@@ -1,8 +1,4 @@
-// if (process.env.NODE_ENV !== "production") {
-//   require("dotenv").config({ path: "./src/config.env" });
-// }
-// const db = require("../config/db");
-// const utcDate = require("../utils/utcDate");
+const mongoose = require("mongoose");
 
 const Movie = require("../models/movie");
 const Auditorium = require("../models/auditorium");
@@ -119,5 +115,30 @@ const populateDatabase = async () => {
 
   console.log("SEED-SUCCESS");
 };
+
+const runSeed = async () => {
+  try {
+    await populateDatabase();
+    await mongoose.connection.close();
+    process.exit(0);
+  } catch (err) {
+    console.error("SEED-FAILED", err);
+    await mongoose.connection.close();
+    process.exit(1);
+  }
+};
+
+if (require.main === module) {
+  if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config({ path: "./src/config.env" });
+  }
+
+  require("../config/db");
+  mongoose.connection.once("open", runSeed);
+  mongoose.connection.on("error", (err) => {
+    console.error("SEED-FAILED", err);
+    process.exit(1);
+  });
+}
 
 module.exports = populateDatabase;
